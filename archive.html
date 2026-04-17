@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive — Time Taken to Make a Dress</title>
+  <meta name="description" content="Every gown we have made, photographed as a fashion editorial. The Archive is our story — and the proof of what patience creates.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Archive page styles --- */
+
+    .page-hero {
+      padding: calc(72px + clamp(80px, 12vw, 140px)) 0 clamp(60px, 8vw, 100px);
+      text-align: center;
+      position: relative;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #0d0905 0%, var(--bg) 100%);
+      z-index: -1;
+    }
+
+    .page-hero h1 { margin-top: 16px; }
+    .page-hero .body-text { margin: 20px auto 0; text-align: center; }
+
+    /* --- Filters --- */
+    .filters {
+      padding: 28px 0;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 72px;
+      background: rgba(10,8,6,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-right: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      border: 0.5px solid var(--border);
+      background: transparent;
+      transition: all 0.3s var(--ease);
+      cursor: pointer;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--border-gold);
+      color: var(--gold-light);
+    }
+
+    .filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      background: rgba(186,117,23,0.08);
+    }
+
+    /* --- Gallery Grid --- */
+    .gallery-section {
+      padding: clamp(48px, 8vw, 80px) 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border: 0.5px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.4s var(--ease);
+    }
+
+    .gallery-item:hover {
+      border-color: var(--border-gold);
+    }
+
+    .gallery-item:nth-child(1) { grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+
+    .gallery-thumb {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+    }
+
+    .gallery-item:nth-child(1) .gallery-thumb {
+      min-height: 656px;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(10,8,6,0.85) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .gallery-meta-row {
+      display: flex;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .gallery-meta-item {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .gallery-meta-label {
+      color: var(--gold-dim);
+    }
+
+    .gallery-meta-value {
+      color: var(--text-dim);
+      margin-left: 4px;
+    }
+
+    .gallery-occasion {
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    /* --- Load More --- */
+    .load-more {
+      text-align: center;
+      padding: 48px 0 clamp(80px, 12vw, 140px);
+    }
+
+    /* --- Stats Bar --- */
+    .stats-bar {
+      border-bottom: 0.5px solid var(--border);
+      padding: 32px 0;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-cell {
+      text-align: center;
+      padding: 0 16px;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .stat-cell:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 300;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-top: 4px;
+    }
+
+    /* --- CTA --- */
+    .archive-cta {
+      padding: clamp(80px, 12vw, 140px) 0;
+      text-align: center;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .archive-cta h2 { margin-bottom: 16px; }
+    .archive-cta .body-text { margin: 0 auto 36px; text-align: center; }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-row: span 1; }
+      .gallery-item:nth-child(1) .gallery-thumb { min-height: 320px; }
+      .gallery-item:nth-child(4) { grid-column: span 1; }
+      .stats-row { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .stat-cell { border-right: none; padding: 12px 0; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-overlay { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">T T M D</a>
+    <ul class="nav-links">
+      <li><a href="bespoke.html">Bespoke</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="commission.html">Commission</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow reveal">The archive</div>
+      <h1 class="reveal">Every gown we have made</h1>
+      <p class="body-text reveal">Photographed as a fashion editorial — not a product shot, but a story. Each commission is a record of patience, craft, and the singular vision of its wearer.</p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-row reveal">
+        <div class="stat-cell">
+          <div class="stat-number">47</div>
+          <div class="stat-label">Commissions completed</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">18,432</div>
+          <div class="stat-label">Hours of craft</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Designs repeated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="filters">
+    <div class="container">
+      <div class="filter-row">
+        <span class="filter-label">Filter</span>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="bridal">Bridal</button>
+        <button class="filter-btn" data-filter="evening">Evening</button>
+        <button class="filter-btn" data-filter="ceremonial">Ceremonial</button>
+        <button class="filter-btn" data-filter="editorial">Editorial</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-grid">
+
+        <div class="gallery-item reveal" data-category="bridal">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">The Cathedral Gown</div>
+            <div class="gallery-occasion">Bridal · Singapore</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">762</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2026</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-category="evening">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">Midnight Silk Column</div>
+            <div class="gallery-occasion">Evening · Hong Kong</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">340</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2025</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-category="bridal">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">The Garden Veil</div>
+            <div class="gallery-occasion">Bridal · Bali</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">520</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2025</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="ceremonial">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">Pearl Cascade</div>
+            <div class="gallery-occasion">Ceremonial · Kuala Lumpur</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">680</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2025</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-category="editorial">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">The Origami Bodice</div>
+            <div class="gallery-occasion">Editorial · Vogue Singapore</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">410</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2024</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-category="bridal">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">Chantilly Dream</div>
+            <div class="gallery-occasion">Bridal · Singapore</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">590</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2024</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="evening">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">The Gilded Sheath</div>
+            <div class="gallery-occasion">Evening · Dubai</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">450</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2024</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-category="ceremonial">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">Silk Orchid</div>
+            <div class="gallery-occasion">Ceremonial · Jakarta</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">380</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2023</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-category="bridal">
+          <div class="gallery-thumb placeholder-img" data-label="Editorial photography"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-title">The Ivory Empress</div>
+            <div class="gallery-occasion">Bridal · Singapore</div>
+            <div class="gallery-meta-row">
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Hours</span><span class="gallery-meta-value">820</span></div>
+              <div class="gallery-meta-item"><span class="gallery-meta-label">Year</span><span class="gallery-meta-value">2023</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="load-more reveal">
+        <button class="btn-outline">View more commissions</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="archive-cta">
+    <div class="container">
+      <div class="eyebrow reveal">Your gown could be next</div>
+      <h2 class="reveal">Join the archive</h2>
+      <p class="body-text reveal">Every commission adds to this story. Begin yours today.</p>
+      <div class="reveal">
+        <a href="commission.html" class="btn-primary">Request a consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">T T M D</div>
+          <div class="footer-address">337A Beach Road<br>Singapore<br>By appointment only</div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <div class="footer-col-title">Atelier</div>
+            <a href="bespoke.html">Bespoke</a>
+            <a href="archive.html">Archive</a>
+            <a href="commission.html">Commission</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Connect</div>
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Time Taken to Make a Dress</span>
+        <span>Crafted by hand. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* --- Archive filter logic --- */
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('.gallery-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+
+          items.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = '';
+              item.style.opacity = '0';
+              requestAnimationFrame(() => {
+                item.style.transition = 'opacity 0.4s ease';
+                item.style.opacity = '1';
+              });
+            } else {
+              item.style.opacity = '0';
+              setTimeout(() => { item.style.display = 'none'; }, 400);
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

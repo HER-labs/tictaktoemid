@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TTMD — $60k Luxury Website Strategy</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Helvetica Neue', sans-serif; background: #0d0b07; color: #e8e0d0; line-height: 1.6; }
+
+  .hero {
+    padding: 80px 48px;
+    text-align: center;
+    background: linear-gradient(180deg, #1a1208 0%, #0d0b07 100%);
+    border-bottom: 0.5px solid rgba(186,117,23,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(186,117,23,0.02) 60px, rgba(186,117,23,0.02) 61px);
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #BA7517;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 300;
+    color: #FAC775;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(232,224,208,0.5);
+    max-width: 560px;
+    margin: 0 auto 24px;
+  }
+  .hero-meta {
+    font-size: 12px;
+    color: rgba(186,117,23,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+
+  .section { padding: 56px 0; border-bottom: 0.5px solid rgba(232,224,208,0.06); }
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(186,117,23,0.6);
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  .section-title {
+    font-size: 26px;
+    font-weight: 300;
+    color: #FAC775;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Problem bars */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(232,224,208,0.06);
+    border: 0.5px solid rgba(232,224,208,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .problem-cell {
+    background: #0d0b07;
+    padding: 28px 24px;
+  }
+  .prob-label {
+    font-size: 10px;
+    color: #BA7517;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .prob-title {
+    font-size: 17px;
+    font-weight: 400;
+    color: #e8e0d0;
+    margin-bottom: 8px;
+  }
+  .prob-desc { font-size: 13px; color: rgba(232,224,208,0.45); line-height: 1.6; }
+
+  /* Feature cards */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .feature-card {
+    background: rgba(232,224,208,0.03);
+    border: 0.5px solid rgba(232,224,208,0.08);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .feature-card:hover { border-color: rgba(186,117,23,0.3); }
+  .feature-card.featured {
+    border-color: rgba(186,117,23,0.25);
+    background: rgba(186,117,23,0.04);
+  }
+  .fc-num {
+    font-size: 11px;
+    color: #BA7517;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  .fc-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #FAC775;
+    margin-bottom: 8px;
+  }
+  .fc-desc { font-size: 13px; color: rgba(232,224,208,0.55); line-height: 1.6; }
+  .fc-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .tag-brand { background: rgba(186,117,23,0.12); color: #BA7517; }
+  .tag-ux { background: rgba(29,158,117,0.12); color: #1D9E75; }
+  .tag-tech { background: rgba(55,138,221,0.12); color: #378ADD; }
+  .tag-ai { background: rgba(239,159,39,0.12); color: #EF9F27; }
+
+  /* Wireframe mockup */
+  .wf-frame {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid rgba(186,117,23,0.2);
+  }
+  .wf-bar {
+    background: #0d0905;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(186,117,23,0.1);
+  }
+  .wf-logo { font-size: 11px; color: #BA7517; letter-spacing: 0.3em; text-transform: uppercase; }
+  .wf-nav { display: flex; gap: 24px; }
+  .wf-nav a { font-size: 11px; color: rgba(250,199,117,0.35); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
+  .wf-hero {
+    height: 280px;
+    background: #050402;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    border-bottom: 0.5px solid rgba(186,117,23,0.08);
+  }
+  .wf-video-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 10px;
+    color: rgba(186,117,23,0.4);
+    letter-spacing: 0.15em;
+    border: 0.5px solid rgba(186,117,23,0.2);
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .wf-hero-title {
+    font-size: 32px;
+    font-weight: 300;
+    color: rgba(250,199,117,0.7);
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .wf-hero-sub {
+    font-size: 10px;
+    color: rgba(186,117,23,0.3);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .wf-cta {
+    padding: 9px 28px;
+    border: 0.5px solid rgba(186,117,23,0.4);
+    font-size: 10px;
+    color: #BA7517;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    border-radius: 1px;
+    display: inline-block;
+  }
+  .wf-process {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+  .wf-step {
+    padding: 20px 16px;
+    border-right: 0.5px solid rgba(232,224,208,0.06);
+    text-align: center;
+  }
+  .wf-step:last-child { border-right: none; }
+  .wf-step-num { font-size: 10px; color: rgba(186,117,23,0.4); margin-bottom: 6px; }
+  .wf-step-label { font-size: 13px; color: rgba(232,224,208,0.6); }
+  .wf-step.active .wf-step-num { color: #BA7517; }
+  .wf-step.active .wf-step-label { color: #FAC775; }
+
+  /* Comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .compare-box {
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .compare-bad {
+    background: rgba(232,224,208,0.02);
+    border: 0.5px solid rgba(232,224,208,0.08);
+    opacity: 0.65;
+  }
+  .compare-good {
+    background: rgba(186,117,23,0.04);
+    border: 0.5px solid rgba(186,117,23,0.2);
+  }
+  .compare-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .compare-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .dot-bad { background: #E24B4A; }
+  .dot-good { background: #BA7517; }
+  .compare-title { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,224,208,0.5); }
+  .compare-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .compare-list li {
+    font-size: 14px;
+    color: rgba(232,224,208,0.5);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .compare-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(232,224,208,0.2);
+    font-size: 11px;
+    top: 3px;
+  }
+  .compare-good .compare-list li { color: rgba(232,224,208,0.8); }
+  .compare-good .compare-list li::before { content: '+'; color: #BA7517; font-weight: 500; }
+
+  /* Benchmark table */
+  .benchmarks { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  .bm-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+  }
+  .bm-name { font-size: 13px; color: rgba(232,224,208,0.55); }
+  .bm-bar {
+    height: 4px;
+    background: rgba(232,224,208,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bm-fill { height: 100%; border-radius: 2px; background: #BA7517; }
+  .bm-val { font-size: 13px; font-weight: 400; color: #FAC775; text-align: right; }
+
+  /* Inspo grid */
+  .inspo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .inspo-card {
+    background: rgba(232,224,208,0.02);
+    border: 0.5px solid rgba(232,224,208,0.07);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .inspo-card:hover { border-color: rgba(186,117,23,0.25); }
+  .inspo-house { font-size: 11px; color: #BA7517; letter-spacing: 0.1em; margin-bottom: 6px; text-transform: uppercase; }
+  .inspo-title { font-size: 14px; color: #FAC775; margin-bottom: 8px; font-weight: 400; }
+  .inspo-steal { font-size: 12px; color: rgba(232,224,208,0.45); line-height: 1.6; }
+
+  /* Roadmap */
+  .roi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .roi-card {
+    background: rgba(186,117,23,0.06);
+    border: 0.5px solid rgba(186,117,23,0.15);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .roi-num { font-size: 28px; font-weight: 300; color: #FAC775; }
+  .roi-label { font-size: 12px; color: rgba(186,117,23,0.6); margin-top: 4px; }
+
+  .timeline { padding-left: 28px; border-left: 0.5px solid rgba(186,117,23,0.2); display: flex; flex-direction: column; gap: 0; }
+  .tl-item { padding: 0 0 36px 28px; position: relative; }
+  .tl-dot {
+    position: absolute;
+    left: -20px;
+    top: 5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #BA7517;
+    border: 2px solid #0d0b07;
+    box-shadow: 0 0 0 0.5px rgba(186,117,23,0.4);
+  }
+  .tl-dot.future { background: rgba(186,117,23,0.2); box-shadow: 0 0 0 0.5px rgba(186,117,23,0.15); }
+  .tl-phase { font-size: 10px; color: #BA7517; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+  .tl-title { font-size: 18px; font-weight: 300; color: #FAC775; margin-bottom: 8px; }
+  .tl-desc { font-size: 14px; color: rgba(232,224,208,0.5); line-height: 1.6; }
+  .tl-price {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #BA7517;
+    background: rgba(186,117,23,0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  .footer-cta {
+    background: rgba(186,117,23,0.06);
+    border: 0.5px solid rgba(186,117,23,0.2);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 48px 0;
+  }
+  .footer-text { font-size: 15px; color: rgba(232,224,208,0.6); line-height: 1.6; flex: 1; }
+  .footer-btn {
+    padding: 12px 28px;
+    background: #BA7517;
+    color: #FAC775;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">Website redesign strategy</div>
+  <h1>Time Taken to Make a Dress<br>— a $60k digital atelier</h1>
+  <p>Transforming a bare-bones placeholder into an award-winning luxury destination for clients who invest $20,000 in a single gown.</p>
+  <div class="hero-meta">T T M D · Singapore · 337A Beach Road · By appointment only</div>
+</div>
+
+<div class="container">
+
+  <!-- PROBLEMS -->
+  <div class="section">
+    <div class="section-eyebrow">Current site — three critical failures</div>
+    <div class="problem-grid">
+      <div class="problem-cell">
+        <div class="prob-label">Failure 01</div>
+        <div class="prob-title">No visual identity</div>
+        <div class="prob-desc">Plain text navigation only. Zero photography, video, or visual representation of the craft being sold at premium price.</div>
+      </div>
+      <div class="problem-cell">
+        <div class="prob-label">Failure 02</div>
+        <div class="prob-title">No client journey</div>
+        <div class="prob-desc">A $20k decision deserves a story, a process, and trust signals. The current site has none of these. The bespoke page is completely empty.</div>
+      </div>
+      <div class="problem-cell">
+        <div class="prob-label">Failure 03</div>
+        <div class="prob-title">No conversion path</div>
+        <div class="prob-desc">Only a WhatsApp link as contact. High-net-worth clients expect a curated, private consultation entry point befitting the brand tier.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 FEATURES -->
+  <div class="section">
+    <div class="section-eyebrow">10 award-winning features</div>
+    <div class="section-title">What the new $60k site delivers</div>
+    <div class="features-grid">
+      <div class="feature-card featured">
+        <div class="fc-num">Feature 01</div>
+        <div class="fc-title">Cinematic full-screen entry</div>
+        <div class="fc-desc">Slow-motion 8K video of hands at work — needle threading silk, beads placed by hand, a gown taking shape. No text for 4 seconds. Then the brand name dissolves in, one letter at a time. The patience communicates price before a single word is read. Mirrors Dior and Valentino's homepage openers.</div>
+        <span class="fc-tag tag-brand">Brand</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 02</div>
+        <div class="fc-title">The Atelier — scroll storytelling</div>
+        <div class="fc-desc">Scroll-triggered chapter narrative where each stage of making is revealed as a cinematic sequence: sketch → toile → first fitting → hand embellishment → final reveal. A running counter shows "762 hours in your gown." Forces clients to feel what they're commissioning before they even enquire.</div>
+        <span class="fc-tag tag-ux">UX</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 03</div>
+        <div class="fc-title">Private client portal</div>
+        <div class="fc-desc">A password-accessed space unique to each commission. Real-time progress photography uploaded by the atelier. Fabric swatches, body measurements, private message thread with the designer. The client experiences the making process even when they cannot be in the room.</div>
+        <span class="fc-tag tag-tech">Tech</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 04</div>
+        <div class="fc-title">Fabric & embellishment archive</div>
+        <div class="fc-desc">Macro-photography library of every silk, lace, tulle, beadwork, and crystal the atelier carries. Each material has an origin story — French Chantilly lace, Murano glass beads, Lyonnaise silk. Hovering reveals thread count, provenance, and tier. Like a jeweller's loupe, digitised.</div>
+        <span class="fc-tag tag-ux">UX</span>
+      </div>
+      <div class="feature-card featured">
+        <div class="fc-num">Feature 05</div>
+        <div class="fc-title">AI-powered vision consultation</div>
+        <div class="fc-desc">Before the first in-person meeting, clients upload reference images, mood boards, and occasion details. A Claude-powered AI assistant generates a first-pass design brief and aesthetic vocabulary — silhouette language, fabric families, embellishment intensity. Two consultation meetings saved. Client arrives already half-decided.</div>
+        <span class="fc-tag tag-ai">AI-powered</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 06</div>
+        <div class="fc-title">The Archive — editorial gallery</div>
+        <div class="fc-desc">Every completed commission photographed as a fashion editorial — not a product shot, but a story. The client's occasion, the inspiration, the challenge solved, the hours invested. Filterable by occasion, silhouette, year. This is the social proof system that justifies $20,000.</div>
+        <span class="fc-tag tag-brand">Brand</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 07</div>
+        <div class="fc-title">The craftsmanship clock</div>
+        <div class="fc-desc">A live, animated counter on the homepage totalling every hour the atelier has invested in making dresses since founding. Changes in real time. Forces the visitor to feel the weight of "time taken." Reinforces the brand name as a philosophy, not just a label. Globally unique execution.</div>
+        <span class="fc-tag tag-ux">UX</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 08</div>
+        <div class="fc-title">Gated private appointment booking</div>
+        <div class="fc-desc">A curated questionnaire gates the booking — occasion, silhouette preference, timeline, budget tier, occasion formality. Makes clients self-qualify before the designer's time is committed. The process itself signals exclusivity: the designer's calendar is precious, and access is earned.</div>
+        <span class="fc-tag tag-tech">Tech</span>
+      </div>
+      <div class="feature-card featured">
+        <div class="fc-num">Feature 09</div>
+        <div class="fc-title">Gown inspiration configurator</div>
+        <div class="fc-desc">Not a gown builder — an inspiration engine. Client selects silhouette family, neckline preference, embellishment level, and occasion formality. The AI generates a curated mood board and fabric recommendation tailored to their choices. They arrive at the first consultation already speaking the designer's language.</div>
+        <span class="fc-tag tag-ai">AI-powered</span>
+      </div>
+      <div class="feature-card">
+        <div class="fc-num">Feature 10</div>
+        <div class="fc-title">Rental prestige — with upgrade path</div>
+        <div class="fc-desc">The Truly Enamoured rental redirect is a significant missed opportunity. A dedicated Rental section on TTMD.com, with editorial photography and proper booking flow. Every rental page ends with: "Fall in love with this gown? Commission your own." The rental audience becomes a bespoke pipeline.</div>
+        <span class="fc-tag tag-brand">Brand</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIREFRAME -->
+  <div class="section">
+    <div class="section-eyebrow">Homepage concept</div>
+    <div class="section-title">The scroll experience</div>
+    <div class="wf-frame">
+      <div class="wf-bar">
+        <div class="wf-logo">T T M D</div>
+        <div class="wf-nav">
+          <a href="#">Bespoke</a>
+          <a href="#">Archive</a>
+          <a href="#">Atelier</a>
+          <a href="#">Commission</a>
+        </div>
+      </div>
+      <div class="wf-hero">
+        <div class="wf-video-tag">Full-screen video · Atelier at work</div>
+        <div class="wf-hero-title">Time Taken<br>to Make a Dress</div>
+        <div class="wf-hero-sub">Singapore · By appointment</div>
+        <div class="wf-cta">Begin your commission</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:0.5px solid rgba(186,117,23,0.08)">
+        <div style="padding:20px;border-right:0.5px solid rgba(232,224,208,0.05)">
+          <div style="font-size:10px;color:rgba(186,117,23,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px">Craftsmanship clock</div>
+          <div style="font-size:28px;font-weight:300;color:rgba(250,199,117,0.5)">18,432</div>
+          <div style="font-size:11px;color:rgba(232,224,208,0.25);margin-top:4px">hours of making, and counting</div>
+        </div>
+        <div style="padding:20px;border-right:0.5px solid rgba(232,224,208,0.05)">
+          <div style="font-size:10px;color:rgba(186,117,23,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px">Philosophy</div>
+          <div style="font-size:13px;color:rgba(232,224,208,0.4);line-height:1.7;font-style:italic">"We celebrate the tangible beauty of the handmade — and champion the time taken."</div>
+        </div>
+        <div style="padding:20px">
+          <div style="font-size:10px;color:rgba(186,117,23,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px">Latest commission</div>
+          <div style="height:70px;background:rgba(232,224,208,0.04);border-radius:4px;display:flex;align-items:center;justify-content:center">
+            <span style="font-size:10px;color:rgba(232,224,208,0.2)">Editorial photography</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:0.5px solid rgba(186,117,23,0.08);padding:16px 20px">
+        <div style="font-size:10px;color:rgba(186,117,23,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px">Scroll chapter 2 — The process</div>
+        <div class="wf-process">
+          <div class="wf-step active"><div class="wf-step-num">01</div><div class="wf-step-label">Sketch</div></div>
+          <div class="wf-step"><div class="wf-step-num">02</div><div class="wf-step-label">Toile</div></div>
+          <div class="wf-step"><div class="wf-step-num">03</div><div class="wf-step-label">Fitting</div></div>
+          <div class="wf-step"><div class="wf-step-num">04</div><div class="wf-step-label">Craft</div></div>
+          <div class="wf-step"><div class="wf-step-num">05</div><div class="wf-step-label">Reveal</div></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:rgba(232,224,208,0.35);line-height:1.7;margin-top:20px;padding:0 4px">Typography direction: thin-weight serif wordmark (Canela, Freight Display, or Domaine Display), light-weight geometric sans for body copy (Neue Haas Grotesk or Founders Grotesk). The visual language must feel like <em>Vogue Arabia</em> or <em>Wallpaper*</em> — not a Squarespace template.</p>
+  </div>
+
+  <!-- BEFORE VS AFTER -->
+  <div class="section">
+    <div class="section-eyebrow">Before vs after</div>
+    <div class="section-title">What changes</div>
+    <div class="compare-grid">
+      <div class="compare-box compare-bad">
+        <div class="compare-header">
+          <div class="compare-dot dot-bad"></div>
+          <div class="compare-title">Current site</div>
+        </div>
+        <ul class="compare-list">
+          <li>Plain text navigation only</li>
+          <li>Zero photography or video</li>
+          <li>Bespoke page completely empty</li>
+          <li>WhatsApp link as sole contact</li>
+          <li>Rental outsourced, off-brand</li>
+          <li>No brand story anywhere on site</li>
+          <li>No trust signals or press mentions</li>
+          <li>Mobile experience broken</li>
+          <li>No consultation pathway</li>
+          <li>Effectively a digital dead end</li>
+        </ul>
+      </div>
+      <div class="compare-box compare-good">
+        <div class="compare-header">
+          <div class="compare-dot dot-good"></div>
+          <div class="compare-title">New $60k site</div>
+        </div>
+        <ul class="compare-list">
+          <li>Cinematic full-screen video entry</li>
+          <li>Editorial-grade photography throughout</li>
+          <li>Full bespoke commission journey</li>
+          <li>Private client portal with progress</li>
+          <li>AI consultation pre-qualifier</li>
+          <li>Scroll-driven craftsmanship storytelling</li>
+          <li>Fabric & embellishment archive</li>
+          <li>Rental with bespoke upgrade CTA</li>
+          <li>Press, awards, and accolade section</li>
+          <li>Gated appointment booking system</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:40px">
+      <div class="section-eyebrow">Performance targets</div>
+      <div class="benchmarks">
+        <div class="bm-row">
+          <div class="bm-name">Average time on site</div>
+          <div class="bm-bar"><div class="bm-fill" style="width:78%"></div></div>
+          <div class="bm-val">4–6 min</div>
+        </div>
+        <div class="bm-row">
+          <div class="bm-name">Consultation request uplift</div>
+          <div class="bm-bar"><div class="bm-fill" style="width:85%"></div></div>
+          <div class="bm-val">+300%</div>
+        </div>
+        <div class="bm-row">
+          <div class="bm-name">Target bounce rate</div>
+          <div class="bm-bar"><div class="bm-fill" style="width:30%;background:#D85A30"></div></div>
+          <div class="bm-val">&lt;35%</div>
+        </div>
+        <div class="bm-row">
+          <div class="bm-name">Mobile-first share</div>
+          <div class="bm-bar"><div class="bm-fill" style="width:65%;background:#1D9E75"></div></div>
+          <div class="bm-val">&gt;60%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSPO / BENCHMARKS -->
+  <div class="section">
+    <div class="section-eyebrow">Haute couture benchmarks — what to steal</div>
+    <div class="section-title">The world's finest fashion websites</div>
+    <div class="inspo-grid">
+      <div class="inspo-card">
+        <div class="inspo-house">Christian Dior</div>
+        <div class="inspo-title">Split-screen dual world</div>
+        <div class="inspo-steal">Dior's homepage splits two equal worlds with a clean vertical divide. TTMD could split Bespoke and Rental with this treatment — giving both streams equal visual prestige from the moment of arrival.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Chanel</div>
+        <div class="inspo-title">Typography as luxury signal</div>
+        <div class="inspo-steal">Chanel's site uses extreme whitespace and restrained serif type. The silence communicates that nothing needs selling hard. TTMD should adopt this: less copy, more negative space, and let the images do the convincing.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Valentino</div>
+        <div class="inspo-title">Behind-the-scenes brand film</div>
+        <div class="inspo-steal">Valentino publishes mini-documentaries of each collection's creation. TTMD should film every commission reveal as a short film — the client's story, the inspiration, the final dress. Content that earns sharing.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Galia Lahav</div>
+        <div class="inspo-title">Atelier process as hero content</div>
+        <div class="inspo-steal">The world's leading bridal couture brand shows needlework, draping, and hand-finishing as primary content. TTMD holds this same card — they just need to document and publish the making. The craft is the story.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Rolex</div>
+        <div class="inspo-title">No e-commerce — by design</div>
+        <div class="inspo-steal">Rolex's site famously cannot transact — you must find a dealer. The site elevates the brand and drives to appointments. TTMD should do exactly the same: the only goal is the consultation booking, never a cart or price display.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Maison Margiela</div>
+        <div class="inspo-title">Intellectual brand confidence</div>
+        <div class="inspo-steal">Margiela's site uses raw editorial photography and deconstructivist design to signal artisanal, rebellious luxury. TTMD's "neither trends nor forecasts" positioning can own this same intellectual confidence without apology.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Elie Saab</div>
+        <div class="inspo-title">Macro embellishment photography</div>
+        <div class="inspo-steal">Extreme close-ups of crystal placement, beadwork density, and lace construction justify price instantly — no copy needed. Commission a macro photographer specifically for the TTMD fabric and embellishment archive.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Guo Pei</div>
+        <div class="inspo-title">Cultural craftsmanship narrative</div>
+        <div class="inspo-steal">Guo Pei weaves Chinese embroidery heritage into every story. TTMD is based in Singapore — there is a rich Southeast Asian textile and artisan tradition no Western couture house can claim. Own that geography.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-house">Prada</div>
+        <div class="inspo-title">Single narrative hero video</div>
+        <div class="inspo-steal">Prada's soundless campaign video tells a complete story in 8 seconds without explanation. TTMD's hero video should be a single, evocative, cinematically composed sequence — not a montage of disconnected clips.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="section">
+    <div class="section-eyebrow">Build roadmap</div>
+    <div class="section-title">How to invest $60,000</div>
+
+    <div class="roi-row">
+      <div class="roi-card">
+        <div class="roi-num">$60k</div>
+        <div class="roi-label">Total investment</div>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">3</div>
+        <div class="roi-label">Commissions to break even</div>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">12 mo</div>
+        <div class="roi-label">Expected payback period</div>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">$20k</div>
+        <div class="roi-label">Average commission value</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 1 — Weeks 1–4</div>
+        <div class="tl-title">Foundation: brand direction & photography</div>
+        <div class="tl-desc">Commission a luxury editorial photographer for a two-day shoot covering the full atelier process, fabric close-ups, and finished gowns. This content powers every phase that follows. Simultaneously engage a luxury brand strategist to define typography system, colour palette, and tone of voice document. This phase is non-negotiable — without it, the build is just a prettier version of what exists.</div>
+        <span class="tl-price">$12,000–$18,000</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 2 — Weeks 5–10</div>
+        <div class="tl-title">Core site: homepage, bespoke, archive, booking</div>
+        <div class="tl-desc">Custom-built in Framer or Webflow (not WordPress — the animation fidelity needed is beyond WordPress without heavy overhead). Cinematic homepage with scroll-triggered storytelling. Bespoke commission page with process chapters. The Archive gallery with editorial photography. Private appointment booking with the questionnaire gate. Full mobile and desktop optimisation.</div>
+        <span class="tl-price">$20,000–$25,000</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-phase">Phase 3 — Weeks 11–14</div>
+        <div class="tl-title">Client portal & AI consultation feature</div>
+        <div class="tl-desc">Custom-built client portal using Supabase as the backend — password-protected per commission, with progress photo upload by the atelier, measurement records, and private messaging. The AI pre-consultation widget built on the Claude API: clients build their brief before meeting the designer, arriving with a vocabulary and reference set already established. Saves two meetings per commission.</div>
+        <span class="tl-price">$12,000–$15,000</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-phase">Phase 4 — Ongoing</div>
+        <div class="tl-title">Rental integration & editorial content</div>
+        <div class="tl-desc">Bring rental fully onto the TTMD domain with editorial-quality photography and a proper booking flow. Each gown page ends with the upgrade prompt. Monthly "Behind the Gown" editorial pieces for SEO and social. Instagram and Pinterest integration so every commission reveal becomes a content event that drives new enquiries organically.</div>
+        <span class="tl-price">$5,000–$8,000</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-cta">
+    <div class="footer-text">Every feature in this strategy is buildable today — Framer for the site, Supabase for the portal, Claude API for AI consultation, and a professional photographer to unlock the whole thing. The craftsmanship is already exceptional. The website just needs to prove it.</div>
+    <a class="footer-btn" href="#">Start with Phase 1</a>
+  </div>
+
+</div>
+</body>
+</html>

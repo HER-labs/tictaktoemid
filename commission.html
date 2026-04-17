@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission — Time Taken to Make a Dress</title>
+  <meta name="description" content="Begin your bespoke commission. Share your vision, your occasion, and your timeline — and we will take the time to bring it to life.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Commission page styles --- */
+
+    .page-hero {
+      padding: calc(72px + clamp(80px, 12vw, 140px)) 0 clamp(60px, 8vw, 100px);
+      text-align: center;
+      position: relative;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #0d0905 0%, var(--bg) 100%);
+      z-index: -1;
+    }
+
+    .page-hero h1 { margin-top: 16px; }
+    .page-hero .body-text { margin: 20px auto 0; text-align: center; }
+
+    /* --- Form Layout --- */
+    .form-section {
+      padding: clamp(64px, 10vw, 120px) 0;
+    }
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(48px, 6vw, 80px);
+    }
+
+    .form-sidebar {
+      position: sticky;
+      top: 120px;
+      align-self: start;
+    }
+
+    .form-sidebar h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-sidebar .body-text {
+      margin-bottom: 32px;
+    }
+
+    .sidebar-note {
+      padding: 24px;
+      background: rgba(186,117,23,0.04);
+      border: 0.5px solid var(--border-gold);
+      border-radius: 2px;
+    }
+
+    .sidebar-note-title {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .sidebar-note p {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* --- Form Elements --- */
+    .commission-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .form-step {
+      padding: 36px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .form-step:first-child { padding-top: 0; }
+    .form-step:last-child { border-bottom: none; }
+
+    .step-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .step-num {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+    }
+
+    .step-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--gold-light);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group:last-child { margin-bottom: 0; }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(232,224,208,0.03);
+      border: 0.5px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--border-gold);
+      background: rgba(186,117,23,0.03);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-faint);
+    }
+
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23BA7517' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-select option {
+      background: #0a0806;
+      color: var(--text);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* --- Choice Cards (silhouette, formality) --- */
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .choice-card {
+      padding: 20px;
+      background: rgba(232,224,208,0.02);
+      border: 0.5px solid var(--border);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      position: relative;
+    }
+
+    .choice-card:hover {
+      border-color: var(--border-gold);
+      background: rgba(186,117,23,0.03);
+    }
+
+    .choice-card.selected {
+      border-color: var(--gold);
+      background: rgba(186,117,23,0.06);
+    }
+
+    .choice-card input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 10px;
+      border: 0.5px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.2;
+    }
+
+    .choice-label {
+      font-size: 13px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .choice-desc {
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    /* --- Budget Scale --- */
+    .budget-options {
+      display: flex;
+      gap: 12px;
+    }
+
+    .budget-chip {
+      flex: 1;
+      padding: 14px 8px;
+      text-align: center;
+      border: 0.5px solid var(--border);
+      background: rgba(232,224,208,0.02);
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      position: relative;
+    }
+
+    .budget-chip:hover {
+      border-color: var(--border-gold);
+    }
+
+    .budget-chip.selected {
+      border-color: var(--gold);
+      background: rgba(186,117,23,0.06);
+    }
+
+    .budget-chip input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .budget-amount {
+      font-size: 14px;
+      color: var(--gold-light);
+      margin-bottom: 2px;
+    }
+
+    .budget-tier {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    /* --- Submit --- */
+    .form-submit {
+      padding-top: 36px;
+    }
+
+    .submit-note {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .form-layout { grid-template-columns: 1fr; }
+      .form-sidebar { position: static; }
+      .choice-grid { grid-template-columns: 1fr 1fr; }
+      .budget-options { flex-wrap: wrap; }
+      .budget-chip { min-width: calc(50% - 6px); }
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .choice-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">T T M D</a>
+    <ul class="nav-links">
+      <li><a href="bespoke.html">Bespoke</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="commission.html">Commission</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow reveal">Begin your commission</div>
+      <h1 class="reveal">Request a consultation</h1>
+      <p class="body-text reveal">Every gown begins with a conversation. Share your vision below, and we will arrange a private consultation at the atelier.</p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-layout">
+
+        <!-- Sidebar -->
+        <div class="form-sidebar reveal">
+          <div class="eyebrow">How it works</div>
+          <h2 style="margin-top: 12px;">A curated process</h2>
+          <p class="body-text">This questionnaire helps us understand your vision before we meet. The more you share, the more prepared the designer will be for your first consultation. Every answer is private and confidential.</p>
+
+          <div class="sidebar-note">
+            <div class="sidebar-note-title">Timeline</div>
+            <p>A bespoke commission typically requires 4–6 months from first consultation to final delivery. For wedding gowns, we recommend beginning at least 8 months before the occasion.</p>
+          </div>
+
+          <div class="sidebar-note" style="margin-top: 16px;">
+            <div class="sidebar-note-title">What happens next</div>
+            <p>After submitting, our team reviews your brief within 48 hours. If the commission is a fit, we will arrange a 90-minute consultation at our Beach Road atelier — by appointment only.</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="commission-form reveal" id="commissionForm">
+
+          <!-- Step 1: About You -->
+          <div class="form-step">
+            <div class="step-header">
+              <span class="step-num">01</span>
+              <span class="step-title">About you</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First name</label>
+                <input type="text" class="form-input" id="firstName" name="firstName" placeholder="Your first name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last name</label>
+                <input type="text" class="form-input" id="lastName" name="lastName" placeholder="Your last name" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-input" id="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone (optional)</label>
+                <input type="tel" class="form-input" id="phone" name="phone" placeholder="+65 ...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="location">Where are you based?</label>
+              <input type="text" class="form-input" id="location" name="location" placeholder="City, Country">
+            </div>
+          </div>
+
+          <!-- Step 2: The Occasion -->
+          <div class="form-step">
+            <div class="step-header">
+              <span class="step-num">02</span>
+              <span class="step-title">The occasion</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">What is the occasion?</label>
+              <select class="form-select" name="occasion" required>
+                <option value="" disabled selected>Select an occasion</option>
+                <option value="wedding">Wedding ceremony</option>
+                <option value="reception">Wedding reception</option>
+                <option value="gala">Gala or black-tie event</option>
+                <option value="ceremony">Cultural ceremony</option>
+                <option value="editorial">Editorial or photoshoot</option>
+                <option value="other">Other — I will describe below</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="eventDate">Event date (approximate)</label>
+                <input type="text" class="form-input" id="eventDate" name="eventDate" placeholder="e.g. November 2026">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="eventLocation">Event location</label>
+                <input type="text" class="form-input" id="eventLocation" name="eventLocation" placeholder="Venue or city">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Formality level</label>
+              <div class="choice-grid">
+                <label class="choice-card">
+                  <input type="radio" name="formality" value="intimate">
+                  <div class="choice-label">Intimate</div>
+                  <div class="choice-desc">Small gathering, relaxed elegance</div>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="formality" value="formal">
+                  <div class="choice-label">Formal</div>
+                  <div class="choice-desc">Traditional ceremony, black tie</div>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="formality" value="grand">
+                  <div class="choice-label">Grand</div>
+                  <div class="choice-desc">Cathedral, ballroom, editorial</div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Your Vision -->
+          <div class="form-step">
+            <div class="step-header">
+              <span class="step-num">03</span>
+              <span class="step-title">Your vision</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Silhouette preference</label>
+              <div class="choice-grid">
+                <label class="choice-card">
+                  <input type="radio" name="silhouette" value="fitted">
+                  <div class="choice-icon">
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="8" y1="6" x2="16" y2="6"/><path d="M9 22h6"/></svg>
+                  </div>
+                  <div class="choice-label">Fitted</div>
+                  <div class="choice-desc">Column, sheath, mermaid</div>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="silhouette" value="structured">
+                  <div class="choice-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2 L8 10 L4 22 L20 22 L16 10 Z"/></svg>
+                  </div>
+                  <div class="choice-label">Structured</div>
+                  <div class="choice-desc">A-line, ballgown, full skirt</div>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="silhouette" value="fluid">
+                  <div class="choice-icon">
+                    <svg viewBox="0 0 24 24"><path d="M6 2 C6 2 4 12 6 22 M18 2 C18 2 20 12 18 22 M12 2 C12 2 10 12 12 22"/></svg>
+                  </div>
+                  <div class="choice-label">Fluid</div>
+                  <div class="choice-desc">Draped, ethereal, movement</div>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vision">Describe your vision</label>
+              <textarea class="form-textarea" id="vision" name="vision" placeholder="Share anything that inspires you — a feeling, a reference image, a memory. There is no wrong answer. The more you share, the better prepared the designer will be for your consultation."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="references">Reference links (optional)</label>
+              <input type="text" class="form-input" id="references" name="references" placeholder="Pinterest boards, Instagram posts, mood boards...">
+            </div>
+          </div>
+
+          <!-- Step 4: Investment -->
+          <div class="form-step">
+            <div class="step-header">
+              <span class="step-num">04</span>
+              <span class="step-title">Investment</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Commission budget range</label>
+              <div class="budget-options">
+                <label class="budget-chip">
+                  <input type="radio" name="budget" value="15-20k">
+                  <div class="budget-amount">$15–20k</div>
+                  <div class="budget-tier">Essential</div>
+                </label>
+                <label class="budget-chip">
+                  <input type="radio" name="budget" value="20-35k">
+                  <div class="budget-amount">$20–35k</div>
+                  <div class="budget-tier">Signature</div>
+                </label>
+                <label class="budget-chip">
+                  <input type="radio" name="budget" value="35-50k">
+                  <div class="budget-amount">$35–50k</div>
+                  <div class="budget-tier">Atelier</div>
+                </label>
+                <label class="budget-chip">
+                  <input type="radio" name="budget" value="50k+">
+                  <div class="budget-amount">$50k+</div>
+                  <div class="budget-tier">Couture</div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-submit">
+            <button type="submit" class="btn-primary" style="width: 100%; text-align: center;">Submit consultation request</button>
+            <p class="submit-note">Your information is private and confidential. We respond to all enquiries within 48 hours. Submitting this form does not obligate you to a commission.</p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">T T M D</div>
+          <div class="footer-address">337A Beach Road<br>Singapore<br>By appointment only</div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <div class="footer-col-title">Atelier</div>
+            <a href="bespoke.html">Bespoke</a>
+            <a href="archive.html">Archive</a>
+            <a href="commission.html">Commission</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Connect</div>
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Time Taken to Make a Dress</span>
+        <span>Crafted by hand. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* --- Commission form interactivity --- */
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Choice card selection
+      document.querySelectorAll('.choice-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const group = card.closest('.choice-grid') || card.closest('.budget-options');
+          group.querySelectorAll('.choice-card, .budget-chip').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        });
+      });
+
+      // Budget chip selection
+      document.querySelectorAll('.budget-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.budget-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+        });
+      });
+
+      // Form submission
+      const form = document.getElementById('commissionForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // In production, this would POST to an API endpoint
+          const submitBtn = form.querySelector('.btn-primary');
+          submitBtn.textContent = 'Request submitted';
+          submitBtn.style.background = 'rgba(186,117,23,0.3)';
+          submitBtn.style.color = '#FAC775';
+          submitBtn.disabled = true;
+
+          // Show thank you message
+          const note = form.querySelector('.submit-note');
+          note.textContent = 'Thank you. We have received your consultation request and will respond within 48 hours.';
+          note.style.color = '#FAC775';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Taken to Make a Dress — Singapore Bespoke Atelier</title>
+  <meta name="description" content="We celebrate the tangible beauty of the handmade — and champion the time taken. Bespoke gowns crafted by hand in Singapore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Homepage-specific styles --- */
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #0d0905 0%, #0a0806 40%, rgba(10,8,6,0.85) 100%);
+      z-index: 0;
+    }
+
+    /* Subtle texture overlay */
+    .hero-video-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 80px, rgba(186,117,23,0.015) 80px, rgba(186,117,23,0.015) 81px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px;
+    }
+
+    .hero-wordmark {
+      font-family: var(--serif);
+      font-size: clamp(42px, 7vw, 86px);
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 0.5s forwards;
+    }
+
+    .hero-sub {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1s forwards;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.3s forwards;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.8s forwards;
+    }
+
+    .hero-scroll-hint span {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Video placeholder badge */
+    .video-badge {
+      position: absolute;
+      top: 88px;
+      right: 32px;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 0.5px solid var(--border-gold);
+      padding: 6px 14px;
+      z-index: 2;
+    }
+
+    /* --- Clock Section --- */
+    .clock-section {
+      padding: clamp(80px, 12vw, 160px) 0;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+    }
+
+    .clock-number {
+      font-family: var(--serif);
+      font-size: clamp(64px, 12vw, 140px);
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin: 24px 0 12px;
+    }
+
+    .clock-label {
+      font-size: 13px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .clock-sub {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 8px;
+    }
+
+    /* --- Philosophy Strip --- */
+    .philosophy {
+      padding: clamp(48px, 8vw, 80px) 0;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .philosophy blockquote {
+      font-family: var(--serif);
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 300;
+      color: var(--text-dim);
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .philosophy cite {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-top: 20px;
+      font-style: normal;
+    }
+
+    /* --- Process Section --- */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .process-step {
+      padding: clamp(28px, 4vw, 48px) clamp(16px, 2vw, 28px);
+      border-right: 0.5px solid var(--border);
+      text-align: center;
+      transition: background 0.4s var(--ease);
+      cursor: default;
+    }
+
+    .process-step:last-child { border-right: none; }
+
+    .process-step:hover {
+      background: rgba(186,117,23,0.04);
+    }
+
+    .process-num {
+      font-size: 10px;
+      color: var(--gold-dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    .process-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      border: 0.5px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .process-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.2;
+    }
+
+    .process-title {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .process-desc {
+      font-size: 12px;
+      color: var(--text-faint);
+      line-height: 1.6;
+    }
+
+    .process-hours {
+      font-size: 10px;
+      color: var(--gold-dim);
+      margin-top: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    /* --- Featured Commission --- */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .featured-image {
+      min-height: 500px;
+    }
+
+    .featured-text {
+      padding: clamp(32px, 5vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-text h3 {
+      margin: 16px 0;
+    }
+
+    .featured-meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .featured-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 4px;
+    }
+
+    .featured-stat-value {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--gold-light);
+      font-weight: 300;
+    }
+
+    /* --- CTA Banner --- */
+    .cta-banner {
+      padding: clamp(64px, 10vw, 120px) 0;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      margin-bottom: 16px;
+    }
+
+    .cta-banner .body-text {
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    /* --- Responsive overrides --- */
+    @media (max-width: 900px) {
+      .process-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .process-step:nth-child(3) { border-right: none; }
+      .process-step:nth-child(4),
+      .process-step:nth-child(5) { border-top: 0.5px solid var(--border); }
+    }
+
+    @media (max-width: 768px) {
+      .featured-grid { grid-template-columns: 1fr; }
+      .featured-image { min-height: 300px; }
+      .featured-meta { flex-direction: column; gap: 16px; }
+    }
+
+    @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-step:nth-child(2n) { border-right: none; }
+      .process-step:nth-child(n+3) { border-top: 0.5px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">T T M D</a>
+    <ul class="nav-links">
+      <li><a href="bespoke.html">Bespoke</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="commission.html">Commission</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-video-bg"></div>
+    <div class="video-badge">Full-screen video · Atelier at work</div>
+    <div class="hero-content">
+      <div class="hero-wordmark">Time Taken<br>to Make a Dress</div>
+      <div class="hero-sub">Singapore · By appointment only</div>
+      <div class="hero-cta">
+        <a href="commission.html" class="btn-outline">Begin your commission</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Craftsmanship Clock -->
+  <section class="clock-section reveal">
+    <div class="container">
+      <div class="eyebrow">The craftsmanship clock</div>
+      <div class="clock-number" id="craft-clock">18,432</div>
+      <div class="clock-label">hours of making, and counting</div>
+      <div class="clock-sub">Every gown. Every stitch. Every bead placed by hand.</div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="philosophy reveal">
+    <div class="container">
+      <blockquote>
+        "We celebrate the tangible beauty of the handmade — and champion the time taken."
+      </blockquote>
+      <cite>— The Atelier Philosophy</cite>
+    </div>
+  </section>
+
+  <!-- The Process -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">How a gown is born</div>
+      <h2 class="reveal" style="margin-top: 16px; margin-bottom: 8px;">The Process</h2>
+      <p class="body-text reveal">Every commission follows five stages of making. Each stage demands patience, precision, and an intimate understanding of the body the dress will live on.</p>
+
+      <div class="process-grid reveal">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+          </div>
+          <div class="process-title">Sketch</div>
+          <div class="process-desc">The vision takes its first breath on paper</div>
+          <div class="process-hours">~40 hours</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2 12 5.69 8 2 3.62 3.46 2 8l3.69 4L2 16l1.62 4.54L8 22l4-3.69L16 22l4.38-1.46L22 16l-3.69-4L22 8l-1.62-4.54z"/></svg>
+          </div>
+          <div class="process-title">Toile</div>
+          <div class="process-desc">The pattern sculpted in cotton, testing every line</div>
+          <div class="process-hours">~80 hours</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <div class="process-title">Fitting</div>
+          <div class="process-desc">The dress meets its body for the first time</div>
+          <div class="process-hours">~60 hours</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="process-title">Craft</div>
+          <div class="process-desc">Hand embellishment — bead, crystal, lace</div>
+          <div class="process-hours">~500 hours</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">05</div>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <div class="process-title">Reveal</div>
+          <div class="process-desc">The finished gown, photographed as art</div>
+          <div class="process-hours">~82 hours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Commission -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">Latest commission</div>
+      <h2 class="reveal" style="margin-top: 16px; margin-bottom: 8px;">From the Archive</h2>
+
+      <div class="featured-grid reveal">
+        <div class="featured-image placeholder-img" data-label="Editorial photography"></div>
+        <div class="featured-text">
+          <div class="eyebrow">Commission 047</div>
+          <h3>The Cathedral Gown</h3>
+          <p class="body-text">A sweeping cathedral-length train with hand-applied French Chantilly lace and 3,200 Swarovski crystals placed individually over 14 weeks. Commissioned for a private ceremony in Singapore.</p>
+          <div class="featured-meta">
+            <div>
+              <div class="featured-stat-label">Hours</div>
+              <div class="featured-stat-value">762</div>
+            </div>
+            <div>
+              <div class="featured-stat-label">Crystals</div>
+              <div class="featured-stat-value">3,200</div>
+            </div>
+            <div>
+              <div class="featured-stat-label">Fittings</div>
+              <div class="featured-stat-value">8</div>
+            </div>
+          </div>
+          <div style="margin-top: 32px;">
+            <a href="archive.html" class="btn-outline">View the archive</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="eyebrow reveal">By appointment only</div>
+      <h2 class="reveal" style="margin-top: 16px;">Your gown begins here</h2>
+      <p class="body-text reveal">Every commission starts with a conversation. Share your vision, your occasion, and your timeline — and we will create something that exists only for you.</p>
+      <div class="reveal">
+        <a href="commission.html" class="btn-primary">Request a consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">T T M D</div>
+          <div class="footer-address">
+            337A Beach Road<br>
+            Singapore<br>
+            By appointment only
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <div class="footer-col-title">Atelier</div>
+            <a href="bespoke.html">Bespoke</a>
+            <a href="archive.html">Archive</a>
+            <a href="commission.html">Commission</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Connect</div>
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Time Taken to Make a Dress</span>
+        <span>Crafted by hand. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
