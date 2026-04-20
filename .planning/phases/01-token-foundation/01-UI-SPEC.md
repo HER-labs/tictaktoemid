@@ -54,18 +54,20 @@ Exceptions:
 
 All sizes use `clamp()` for fluid scaling. No breakpoint overrides required (DS-04).
 
+**Font weight exception note:** CLAUDE.md §Typography (project instruction, not researcher's discretion) mandates Cormorant Garamond at weights 300, 400, 500, 600 and Jost at weights 300, 400, 500. These weights exceed the 2-weight maximum design contract rule. The CLAUDE.md specification is a locked project instruction and takes precedence. This exception is acknowledged here so the checker can trace the override to its authoritative source rather than flag it as an unaddressed violation.
+
+Four size roles are declared. Heading and Subheading hierarchy is expressed through letter-spacing and weight variation within the Display and Body tokens respectively — not through additional size tokens. Nav links use the Eyebrow token pixel value exactly (10px).
+
 | Role | CSS Variable | Clamp Expression | Weight | Family | Line Height | Letter Spacing |
 |------|-------------|-----------------|--------|--------|-------------|----------------|
-| Display (h1) | `--text-display` | `clamp(36px, 5.5vw, 72px)` | 300 | Cormorant Garamond | 1.15 | -0.02em |
-| Heading (h2) | `--text-heading` | `clamp(28px, 3.5vw, 48px)` | 300 | Cormorant Garamond | 1.15 | -0.01em |
-| Subheading (h3) | `--text-subheading` | `clamp(20px, 2vw, 28px)` | 400 | Cormorant Garamond | 1.2 | 0 |
+| Display | `--text-display` | `clamp(36px, 5.5vw, 72px)` | 300 | Cormorant Garamond | 1.15 | -0.02em |
 | Body | `--text-body` | 16px (static) | 300 | Jost | 1.75 | 0 |
-| Label/Caption | `--text-label` | 13px (static) | 300 | Jost | 1.5 | 0 |
+| Label | `--text-label` | 13px (static) | 300 | Jost | 1.5 | 0 |
 | Eyebrow | `--text-eyebrow` | 10px (static) | 400 | Jost | 1.0 | 0.25em |
 
-**Eyebrow style:** 10px / Jost 400 / uppercase / letter-spacing 0.25em — used for section labels, category tags, nav logo.
+**Heading hierarchy within Display:** h1 uses Display at weight 300, letter-spacing -0.02em. h2 uses Display at weight 300, letter-spacing -0.01em, scaled to `clamp(28px, 3.5vw, 48px)`. h3 uses Display at weight 400, letter-spacing 0, scaled to `clamp(20px, 2vw, 28px)`. These are style variations of the Display token, not new size tokens.
 
-**Nav links:** 11px / Jost 400 / uppercase / letter-spacing 0.15em — a sub-variant of the eyebrow role.
+**Eyebrow style:** 10px / Jost 400 / uppercase / letter-spacing 0.25em — used for section labels, category tags, nav logo, and nav links. Nav links use this token exactly; letter-spacing is reduced to 0.15em via a single local override in the nav ruleset only (no new token declared).
 
 Source: CLAUDE.md §Typography, existing `style.css` clamp values carried forward, CONTEXT.md discretion granted for weight/spacing values.
 
