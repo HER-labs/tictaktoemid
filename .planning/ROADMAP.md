@@ -30,7 +30,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. The editorial serif / geometric sans pairing is loaded and renders at the right scale on mobile and desktop with no breakpoint overrides needed for type sizing
   3. All placeholder containers display a fine-line SVG motif on an ivory surface — no grey boxes visible anywhere
   4. Hover, focus, and active states visibly darken against the ivory background without any element disappearing into the background
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
 ### Phase 2: Shared Chrome
@@ -43,7 +46,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The footer renders with address, navigation links, and social links on every page
   4. The WhatsApp CTA component renders as a branded luxury block (not a green bubble) with a pre-filled enquiry message that opens WhatsApp when tapped
   5. Images can be swapped by dropping files into their role directory and updating one src attribute per image
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
 ### Phase 3: Homepage + Bespoke
@@ -56,7 +62,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The five-step process section, philosophy quote, featured commission, and bottom CTA banner all render with scroll-reveal fade-up animations on entry
   4. The Bespoke page renders all five alternating image/text chapters, four or more fabric archive cards, the "Our promise" triptych, and a WhatsApp CTA
   5. Every section on both pages has a visible WhatsApp CTA as the primary conversion path
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
 ### Phase 4: Archive Gallery
@@ -69,7 +78,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Hovering or long-pressing a gallery item reveals an overlay showing the gown name, occasion, hours, and year
   4. The "View more" button loads additional gallery items without a full page reload
   5. A WhatsApp CTA renders at the bottom of the archive page
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
 ### Phase 5: Rental Page
@@ -82,7 +94,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The rental process section explains all four steps (browse, book, wear, return) in readable order
   4. Pricing tiers or indication are visible — visitors know approximately what rental costs before enquiring
   5. The bespoke upgrade block presents a compelling editorial CTA encouraging renters to commission their own gown, with a WhatsApp link
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
 ### Phase 6: Production
