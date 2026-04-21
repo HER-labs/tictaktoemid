@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design System
 
-- [ ] **DS-01**: CSS custom property token system with warm ivory palette (primitives, semantics, component tokens)
-- [ ] **DS-02**: Typography pairing established — editorial serif for headings, geometric sans for body
-- [ ] **DS-03**: Dark brass accent color for text elements that passes WCAG AA on ivory backgrounds
-- [ ] **DS-04**: Responsive fluid typography using clamp() — no breakpoint overrides for type sizing
-- [ ] **DS-05**: Interaction states (hover, focus, active) designed for "darken on light" paradigm
+- [x] **DS-01**: CSS custom property token system with warm ivory palette (primitives, semantics, component tokens)
+- [x] **DS-02**: Typography pairing established — editorial serif for headings, geometric sans for body
+- [x] **DS-03**: Dark brass accent color for text elements that passes WCAG AA on ivory backgrounds
+- [x] **DS-04**: Responsive fluid typography using clamp() — no breakpoint overrides for type sizing
+- [x] **DS-05**: Interaction states (hover, focus, active) designed for "darken on light" paradigm
 
 ### Shared Chrome
 
@@ -130,11 +130,11 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DS-01 | Phase 1 | Pending |
-| DS-02 | Phase 1 | Pending |
-| DS-03 | Phase 1 | Pending |
-| DS-04 | Phase 1 | Pending |
-| DS-05 | Phase 1 | Pending |
+| DS-01 | Phase 1 | Complete |
+| DS-02 | Phase 1 | Complete |
+| DS-03 | Phase 1 | Complete |
+| DS-04 | Phase 1 | Complete |
+| DS-05 | Phase 1 | Complete |
 | IMG-01 | Phase 1 | Pending |
 | IMG-02 | Phase 1 | Pending |
 | SC-01 | Phase 2 | Pending |

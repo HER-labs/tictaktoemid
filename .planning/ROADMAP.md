@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Hover, focus, and active states visibly darken against the ivory background without any element disappearing into the background
 **Plans**: 2 plans
 Plans:
-- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [x] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
 - [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
