@@ -6,22 +6,6 @@
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --bg:        #0a0806;
-  --bg-card:   rgba(232,224,208,0.025);
-  --gold:      #BA7517;
-  --gold-light:#FAC775;
-  --gold-dim:  rgba(186,117,23,0.4);
-  --text:      #e8e0d0;
-  --text-dim:  rgba(232,224,208,0.5);
-  --text-faint:rgba(232,224,208,0.25);
-  --border:    rgba(232,224,208,0.06);
-  --border-gold:rgba(186,117,23,0.2);
-  --serif:     'Playfair Display', 'Georgia', serif;
-  --sans:      'Inter', -apple-system, 'Helvetica Neue', sans-serif;
-  --ease:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -33,7 +17,7 @@ body {
   font-family: var(--sans);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.75;
   overflow-x: hidden;
 }
 
@@ -47,14 +31,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 10px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--text-secondary);
   font-weight: 400;
 }
 
 h1, h2, h3 {
   font-family: var(--serif);
   font-weight: 300;
-  color: var(--gold-light);
+  color: var(--text);
   line-height: 1.15;
 }
 
@@ -64,7 +48,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 
 .body-text {
   font-size: 15px;
-  color: var(--text-dim);
+  color: var(--text-secondary);
   line-height: 1.75;
   max-width: 600px;
 }
@@ -78,7 +62,6 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 
 .section {
   padding: clamp(64px, 10vw, 140px) 0;
-  border-bottom: 0.5px solid var(--border);
 }
 
 /* --- Navigation --- */
@@ -93,16 +76,14 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   align-items: center;
   justify-content: space-between;
   height: 72px;
-  background: rgba(10,8,6,0.85);
+  background: rgba(248,246,243,0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 0.5px solid transparent;
-  transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  transition: background 500ms var(--ease);
 }
 
 .nav.scrolled {
-  border-bottom-color: var(--border);
-  background: rgba(10,8,6,0.95);
+  background: rgba(248,246,243,0.95);
 }
 
 .nav-logo {
@@ -110,7 +91,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   font-size: 11px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--text-secondary);
   font-weight: 400;
 }
 
@@ -124,8 +105,8 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text-faint);
-  transition: color 0.3s var(--ease);
+  color: var(--text-tertiary);
+  transition: color 500ms var(--ease);
   position: relative;
 }
 
@@ -136,13 +117,13 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   left: 0;
   width: 0;
   height: 0.5px;
-  background: var(--gold);
-  transition: width 0.3s var(--ease);
+  background: var(--text);
+  transition: width 500ms var(--ease);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--gold-light);
+  color: var(--text-secondary);
 }
 
 .nav-links a:hover::after,
@@ -162,52 +143,51 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   display: block;
   width: 22px;
   height: 1px;
-  background: var(--gold);
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+  background: var(--text-secondary);
+  transition: transform 500ms var(--ease), opacity 500ms var(--ease);
 }
 
 /* --- Buttons --- */
 .btn-primary {
   display: inline-block;
   padding: 14px 36px;
-  background: var(--gold);
-  color: #0a0806;
+  background: var(--text);
+  color: var(--bg);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border-radius: 0;
-  transition: background 0.3s var(--ease), transform 0.2s var(--ease);
+  transition: background 500ms var(--ease), transform 500ms var(--ease);
 }
 
 .btn-primary:hover {
-  background: var(--gold-light);
+  background: #0D0D0D;
   transform: translateY(-1px);
 }
 
 .btn-outline {
   display: inline-block;
   padding: 14px 36px;
-  border: 0.5px solid var(--border-gold);
-  color: var(--gold);
+  border: 0.5px solid var(--text-tertiary);
+  color: var(--text-secondary);
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), background 0.3s var(--ease);
+  transition: color 500ms var(--ease), background 500ms var(--ease);
 }
 
 .btn-outline:hover {
-  border-color: var(--gold);
-  background: rgba(186,117,23,0.08);
-  color: var(--gold-light);
+  color: var(--text);
+  background: var(--bg-surface);
 }
 
 /* --- Scroll Reveal Animations --- */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition: opacity 800ms var(--ease), transform 800ms var(--ease);
 }
 
 .reveal.visible {
@@ -223,7 +203,6 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 /* --- Footer --- */
 .site-footer {
   padding: 64px 0;
-  border-top: 0.5px solid var(--border);
 }
 
 .footer-inner {
@@ -239,7 +218,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 
 .footer-address {
   font-size: 13px;
-  color: var(--text-faint);
+  color: var(--text-tertiary);
   line-height: 1.8;
   margin-top: 12px;
 }
@@ -253,34 +232,32 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold-dim);
+  color: var(--text-tertiary);
   margin-bottom: 16px;
 }
 
 .footer-col a {
   display: block;
   font-size: 13px;
-  color: var(--text-faint);
+  color: var(--text-tertiary);
   margin-bottom: 10px;
-  transition: color 0.3s var(--ease);
+  transition: color 500ms var(--ease);
 }
 
-.footer-col a:hover { color: var(--gold-light); }
+.footer-col a:hover { color: var(--text); }
 
 .footer-bottom {
   margin-top: 48px;
   padding-top: 24px;
-  border-top: 0.5px solid var(--border);
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: var(--text-faint);
+  color: var(--text-tertiary);
 }
 
 /* --- Placeholder image blocks --- */
 .placeholder-img {
-  background: linear-gradient(135deg, rgba(186,117,23,0.06) 0%, rgba(232,224,208,0.03) 100%);
-  border: 0.5px solid var(--border);
+  background: var(--bg-surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,7 +270,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text-faint);
+  color: var(--text-tertiary);
 }
 
 /* --- Responsive --- */
@@ -304,7 +281,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
     flex-direction: column;
     position: fixed;
     inset: 72px 0 0 0;
-    background: rgba(10,8,6,0.98);
+    background: rgba(248,246,243,0.98);
     padding: 48px 32px;
     gap: 24px;
     z-index: 999;

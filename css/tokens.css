@@ -1,0 +1,34 @@
+/* ============================================================
+   TTMD — Time Taken to Make a Dress
+   Design Tokens — import before all other stylesheets
+   ============================================================ */
+
+:root {
+  /* Color */
+  --bg:              #F8F6F3;
+  --bg-surface:      #F2EFEB;
+  --text:            #1A1A1A;
+  --text-secondary:  #4A4A4A;
+  --text-tertiary:   #8A8A8A;
+
+  /* Typography */
+  --serif:  'Cormorant Garamond', 'Georgia', serif;
+  --sans:   'Jost', -apple-system, 'Helvetica Neue', sans-serif;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 140px;
+
+  /* Easing & Transition */
+  --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition: 500ms var(--ease);
+
+  /* Placeholder */
+  --placeholder-opacity: 0.30;
+}
