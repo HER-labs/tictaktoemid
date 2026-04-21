@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" fill="none">
+  <title>Dress silhouette placeholder</title>
+  <path d="M192 35 C190 32, 188 30, 186 30 C184 30, 182 32, 180 35 L178 40 C176 45, 175 50, 176 55 L177 60 C177 65, 178 70, 179 75 L180 80 C180 82, 180 84, 179 87 L175 95 C170 105, 160 120, 145 140 C130 160, 115 175, 105 185 L95 195"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M208 35 C210 32, 212 30, 214 30 C216 30, 218 32, 220 35 L222 40 C224 45, 225 50, 224 55 L223 60 C223 65, 222 70, 221 75 L220 80 C220 82, 220 84, 221 87 L225 95 C230 105, 240 120, 255 140 C270 160, 285 175, 295 185 L305 195"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M186 30 C190 28, 195 27, 200 27 C205 27, 210 28, 214 30"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M95 195 C110 192, 140 190, 200 190 C260 190, 290 192, 305 195"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M160 140 C170 145, 185 148, 200 148 C215 148, 230 145, 240 140"
+        stroke="#1A1A1A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 165 C155 170, 175 172, 200 172 C225 172, 245 170, 270 165"
+        stroke="#1A1A1A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <title>Dress silhouette placeholder</title>
+  <path d="M60 240 C80 200, 110 160, 140 130 C170 100, 200 80, 240 60"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M75 255 C95 210, 125 165, 155 130 C185 95, 210 75, 250 55"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M95 265 C110 225, 135 180, 165 145 C195 110, 220 85, 255 70"
+        stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 270 C135 235, 155 195, 180 160 C205 125, 230 100, 260 85"
+        stroke="#1A1A1A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M150 275 C160 245, 175 210, 195 178 C215 146, 235 120, 262 105"
+        stroke="#1A1A1A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
