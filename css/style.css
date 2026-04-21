@@ -255,22 +255,42 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   color: var(--text-tertiary);
 }
 
-/* --- Placeholder image blocks --- */
-.placeholder-img {
+/* --- Placeholder System ---
+   Usage:
+   <div class="placeholder placeholder--hero">
+     <img src="img/placeholders/silhouette-hero.svg" alt="" aria-label="Image placeholder — hero">
+   </div>
+*/
+.placeholder {
+  position: relative;
   background: var(--bg-surface);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  position: relative;
 }
 
-.placeholder-img::after {
-  content: attr(data-label);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
+.placeholder img,
+.placeholder svg {
+  position: absolute;
+  opacity: var(--placeholder-opacity);
+  width: 40%;
+  height: auto;
+}
+
+.placeholder--hero {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.placeholder--portrait {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+}
+
+.placeholder--fabric {
+  aspect-ratio: 1 / 1;
+  width: 100%;
 }
 
 /* --- Responsive --- */
