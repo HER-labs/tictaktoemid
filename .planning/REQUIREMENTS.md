@@ -60,8 +60,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Image System
 
-- [ ] **IMG-01**: Smart placeholder system using CSS aspect-ratio containers with warm ivory surface tones
-- [ ] **IMG-02**: Placeholder containers display centered fine-line SVG motif (not grey blocks)
+- [x] **IMG-01**: Smart placeholder system using CSS aspect-ratio containers with warm ivory surface tones
+- [x] **IMG-02**: Placeholder containers display centered fine-line SVG motif (not grey blocks)
 - [ ] **IMG-03**: Image directory structure organized by role (hero, gowns, process, fabric, rental)
 - [ ] **IMG-04**: Easy photo swap workflow — drop images into directory, update src attributes
 
@@ -135,8 +135,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | DS-03 | Phase 1 | Complete |
 | DS-04 | Phase 1 | Complete |
 | DS-05 | Phase 1 | Complete |
-| IMG-01 | Phase 1 | Pending |
-| IMG-02 | Phase 1 | Pending |
+| IMG-01 | Phase 1 | Complete |
+| IMG-02 | Phase 1 | Complete |
 | SC-01 | Phase 2 | Pending |
 | SC-02 | Phase 2 | Pending |
 | SC-03 | Phase 2 | Pending |

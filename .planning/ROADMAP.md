@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 Plans:
 - [x] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
-- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
+- [x] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
 ### Phase 2: Shared Chrome
@@ -48,7 +48,7 @@ Plans:
   5. Images can be swapped by dropping files into their role directory and updating one src attribute per image
 **Plans**: 2 plans
 Plans:
-- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
+- [x] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
 - [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
 **UI hint**: yes
 
