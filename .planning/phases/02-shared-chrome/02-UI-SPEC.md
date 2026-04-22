@@ -31,7 +31,7 @@ Declared values from `css/tokens.css` (all multiples of 4):
 
 | Token | Value | Usage in this phase |
 |-------|-------|---------------------|
-| `--space-xs` | 4px | Hamburger bar gap (5px existing, keep as-is) |
+| `--space-xs` | 4px | Hamburger bar gap |
 | `--space-sm` | 8px | Inline padding, footer bottom gap on mobile |
 | `--space-md` | 16px | Footer brand margin-bottom, footer column title margin |
 | `--space-lg` | 24px | Mobile overlay link gap, footer bottom padding-top, container side padding min |
@@ -47,7 +47,10 @@ Exceptions:
 
 ## Typography
 
-All typography is established in Phase 1 tokens. This phase uses the following subset:
+All typography is established in Phase 1 tokens. This phase uses exactly 4 font sizes and 2 font weights.
+
+**Font sizes (4):** 11px (label), 14px (body-small), 16px (body), clamp(28px, 3.5vw, 48px) (display)
+**Font weights (2):** 300 (light/display), 400 (regular)
 
 | Role | Font | Size | Weight | Line Height | Letter Spacing | Usage |
 |------|------|------|--------|-------------|----------------|-------|
@@ -55,12 +58,12 @@ All typography is established in Phase 1 tokens. This phase uses the following s
 | Nav links | Jost | 11px | 400 | 1.0 | 0.15em | Desktop nav link text |
 | Mobile overlay links | Jost | 16px | 400 | 1.0 | 0.15em | Enlarged for touch targets |
 | CTA headline | Cormorant Garamond | clamp(28px, 3.5vw, 48px) | 300 | 1.15 | -0.01em | WhatsApp CTA banner headline (h2 scale) |
-| CTA subtext | Jost | 15px | 300 | 1.75 | 0 | WhatsApp CTA supporting copy |
-| CTA button | Jost | 11px | 500 | 1.0 | 0.18em | WhatsApp CTA button label (btn-primary scale) |
+| CTA subtext | Jost | 14px | 300 | 1.75 | 0 | WhatsApp CTA supporting copy |
+| CTA button | Jost | 11px | 400 | 1.0 | 0.18em | WhatsApp CTA button label (uppercase + tracking provides sufficient distinction) |
 | Footer brand | Jost | 11px | 400 | 1.0 | 0.35em | Footer wordmark (matches nav) |
-| Footer tagline | Jost | 13px | 300 | 1.8 | 0 | Tagline below footer wordmark |
-| Footer col title | Jost | 10px | 400 | 1.0 | 0.2em | Column headings in footer nav |
-| Footer links | Jost | 13px | 400 | 1.0 | 0 | Footer navigation links |
+| Footer tagline | Jost | 14px | 300 | 1.8 | 0 | Tagline below footer wordmark |
+| Footer col title | Jost | 11px | 400 | 1.0 | 0.2em | Column headings in footer nav (uppercase) |
+| Footer links | Jost | 14px | 400 | 1.0 | 0 | Footer navigation links |
 | Footer bottom | Jost | 11px | 400 | 1.0 | 0 | Copyright, legal text |
 
 All text is uppercase where `text-transform: uppercase` is specified. All other text is sentence case.
@@ -114,7 +117,7 @@ Accent reserved for: Nothing. This is a monochromatic system. The only "accent" 
 | Property | Value |
 |----------|-------|
 | Breakpoint | 768px -- hamburger appears, desktop links hide |
-| Hamburger | 3 spans, each 22px wide x 1px tall, 5px gap, `--text-secondary` color |
+| Hamburger | 3 spans, each 22px wide x 1px tall, 4px gap, `--text-secondary` color |
 | Hamburger open state | Top bar rotates +45deg, middle bar opacity 0, bottom bar rotates -45deg. Transition: `transform 500ms var(--ease), opacity 500ms var(--ease)` |
 | Overlay position | Fixed, `inset: 72px 0 0 0` (below nav bar), z-index: 999 |
 | Overlay background | `rgba(248,246,243,0.98)` -- near-opaque ivory |
@@ -136,10 +139,10 @@ Accent reserved for: Nothing. This is a monochromatic system. The only "accent" 
 | Background | `--bg-surface` (#F2EFEB) -- subtle separation from page background |
 | Padding | `clamp(64px, 10vw, 140px)` top/bottom (matches `.section` pattern) |
 | Headline | Cormorant Garamond, h2 scale, weight 300, `--text`, centered |
-| Subtext | 15px Jost, weight 300, `--text-secondary`, centered, max-width 480px, line-height 1.75 |
+| Subtext | 14px Jost, weight 300, `--text-secondary`, centered, max-width 480px, line-height 1.75 |
 | Gap headline-to-subtext | 16px |
 | Gap subtext-to-button | 32px |
-| Button | `.btn-primary` -- dark fill, 11px uppercase Jost, padding 14px 36px |
+| Button | `.btn-primary` -- dark fill, 11px uppercase Jost weight 400, padding 14px 36px |
 | Button labels by page | See Copywriting Contract below |
 | WhatsApp URL | `https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.` |
 | No WhatsApp branding | No green, no WhatsApp icon, no bubble. Luxury editorial aesthetic only |
@@ -153,11 +156,11 @@ Accent reserved for: Nothing. This is a monochromatic system. The only "accent" 
 |----------|-------|
 | Padding | 64px top/bottom |
 | Layout | Flex row, space-between, align-start, gap 48px |
-| Brand section | Wordmark (matches nav), tagline below: "Celebrating the time taken." in 13px Jost weight 300, `--text-tertiary` |
+| Brand section | Wordmark (matches nav), tagline below: "Celebrating the time taken." in 14px Jost weight 300, `--text-tertiary` |
 | No address | Atelier is personal/home-visit -- no physical location displayed |
 | Navigation columns | Two columns: "Pages" (Bespoke, Archive, Rental) + "Connect" (Instagram, WhatsApp) |
-| Column titles | 10px Jost, tracking 0.2em, uppercase, `--text-tertiary` |
-| Column links | 13px Jost, `--text-tertiary`, hover: `--text`, transition 500ms |
+| Column titles | 11px Jost, weight 400, tracking 0.2em, uppercase, `--text-tertiary` |
+| Column links | 14px Jost, weight 400, `--text-tertiary`, hover: `--text`, transition 500ms |
 | Instagram link | Inline SVG icon (outline style, 16px) + "Instagram" text label. Opens in new tab |
 | WhatsApp link | Text-only "WhatsApp" link to wa.me URL. No icon needed |
 | Bottom bar | Margin-top 48px, padding-top 24px, flex row space-between |
@@ -267,7 +270,7 @@ Mobile-first priority per D-17. All shared chrome is designed for mobile first, 
 | ARIA labels | Hamburger: `aria-label="Menu"`, `aria-expanded="false/true"`. Overlay: `role="dialog"`, `aria-label="Navigation"` |
 | Skip link | Hidden skip-to-content link as first focusable element: "Skip to main content" |
 | Semantic HTML | `<nav>` for navigation, `<footer>` for footer, `<a>` for all links |
-| Color contrast | `--text` (#1A1A1A) on `--bg` (#F8F6F3): ratio 14.5:1 (AAA). `--text-tertiary` (#8A8A8A) on `--bg`: ratio 3.2:1 (AA for large text only -- acceptable for 10-11px labels at uppercase with wide tracking) |
+| Color contrast | `--text` (#1A1A1A) on `--bg` (#F8F6F3): ratio 14.5:1 (AAA). `--text-tertiary` (#8A8A8A) on `--bg`: ratio 3.2:1 (AA for large text only -- acceptable for 11px labels at uppercase with wide tracking) |
 | Touch targets | 48px minimum tap height in mobile overlay |
 
 ---
