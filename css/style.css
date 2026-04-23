@@ -147,6 +147,24 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   transition: transform 500ms var(--ease), opacity 500ms var(--ease);
 }
 
+/* --- Skip Link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 9999;
+  transition: top 200ms;
+}
+.skip-link:focus {
+  top: 8px;
+}
+
 /* --- Buttons --- */
 .btn-primary {
   display: inline-block;
@@ -223,6 +241,14 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   margin-top: 12px;
 }
 
+.footer-tagline {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
 .footer-nav {
   display: flex;
   gap: 48px;
@@ -245,6 +271,12 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 
 .footer-col a:hover { color: var(--text); }
+
+.footer-instagram-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 .footer-bottom {
   margin-top: 48px;
@@ -293,6 +325,26 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   width: 100%;
 }
 
+/* --- CTA Banner --- */
+.cta-banner {
+  background: var(--bg-surface);
+  padding: clamp(64px, 10vw, 140px) 0;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  margin-bottom: 16px;
+}
+
+.cta-banner .cta-subtext {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -308,7 +360,33 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   }
   .nav-toggle { display: flex; }
 
+  .nav-links.open a {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+  .nav-overlay-cta {
+    margin-top: auto;
+    width: 100%;
+    list-style: none;
+  }
+  .nav-overlay-cta .btn-primary {
+    display: block;
+    text-align: center;
+  }
+
   .footer-inner { flex-direction: column; }
   .footer-nav { flex-direction: column; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 8px; }
+}
+
+@media (min-width: 769px) {
+  .nav-overlay-cta { display: none; }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
