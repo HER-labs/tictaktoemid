@@ -48,8 +48,8 @@ Plans:
   5. Images can be swapped by dropping files into their role directory and updating one src attribute per image
 **Plans**: 2 plans
 Plans:
-- [x] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
-- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
+- [ ] 02-01-PLAN.md — CSS/JS infrastructure: CTA banner styles, footer tagline, skip link, overlay CTA, reduced motion, closeOverlay JS, images/ directory
+- [ ] 02-02-PLAN.md — HTML synchronization: canonical nav, footer, and WhatsApp CTA across all 4 pages
 **UI hint**: yes
 
 ### Phase 3: Homepage + Bespoke
@@ -114,12 +114,12 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Token Foundation | 0/TBD | Not started | - |
-| 2. Shared Chrome | 0/TBD | Not started | - |
+| 1. Token Foundation | 2/2 | Complete | - |
+| 2. Shared Chrome | 0/2 | Planning complete | - |
 | 3. Homepage + Bespoke | 0/TBD | Not started | - |
 | 4. Archive Gallery | 0/TBD | Not started | - |
 | 5. Rental Page | 0/TBD | Not started | - |
