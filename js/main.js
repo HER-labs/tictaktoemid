@@ -9,25 +9,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav');
   if (nav) {
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
+      nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
   }
 
   /* --- Mobile nav toggle --- */
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
+
+  // Declared at DOMContentLoaded scope so smooth scroll handler can access it
+  let closeOverlay = null;
+
   if (toggle && navLinks) {
+    const spans = toggle.querySelectorAll('span');
+
+    closeOverlay = function() {
+      navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    };
+
     toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const spans = toggle.querySelectorAll('span');
-      if (navLinks.classList.contains('open')) {
+      const isOpen = navLinks.classList.contains('open');
+      if (isOpen) {
+        closeOverlay();
+      } else {
+        navLinks.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
         spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
-      } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        closeOverlay();
+        toggle.focus();
       }
     });
   }
@@ -104,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         // Close mobile nav if open
-        if (navLinks && navLinks.classList.contains('open')) {
-          navLinks.classList.remove('open');
+        if (navLinks && navLinks.classList.contains('open') && closeOverlay) {
+          closeOverlay();
         }
       }
     });
