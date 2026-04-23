@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* --- Craftsmanship Clock --- */
   const clockEl = document.getElementById('craft-clock');
   if (clockEl) {
-    // Base hours: ~18,400 hours as of site launch, incrementing slowly
-    const baseHours = 18432;
-    const launchDate = new Date('2026-04-16T00:00:00');
-    const hoursPerDay = 8; // atelier works ~8 hours/day
+    // Hours accumulating since atelier founding in 2010 (6 days/week, 12 hrs/day)
+    const baseHours = 0;
+    const launchDate = new Date('2010-01-01T00:00:00');
+    const hoursPerDay = (12 * 6) / 7; // ~10.29 hrs/day averaged over 7 days
 
     function updateClock() {
       const now = new Date();
