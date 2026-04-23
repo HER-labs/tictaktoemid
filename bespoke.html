@@ -222,20 +222,27 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">T T M D</a>
-    <ul class="nav-links">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="index.html" class="nav-logo">Time Taken to Make a Dress</a>
+    <ul class="nav-links" id="nav-overlay" role="list">
       <li><a href="bespoke.html">Bespoke</a></li>
       <li><a href="archive.html">Archive</a></li>
-      <li><a href="commission.html">Commission</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">Contact</a></li>
+      <li class="nav-overlay-cta">
+        <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+           class="btn-primary">Begin your commission</a>
+        <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
+      </li>
     </ul>
-    <button class="nav-toggle" aria-label="Menu">
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-overlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- Page Hero -->
-  <section class="page-hero">
+  <section class="page-hero" id="main-content">
     <div class="container">
       <div class="eyebrow reveal">The bespoke experience</div>
       <h1 class="reveal">Made only for you</h1>
@@ -418,46 +425,53 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bespoke-cta">
+  <!-- CTA Banner -->
+  <section class="cta-banner">
     <div class="container">
-      <div class="eyebrow reveal">Begin</div>
-      <h2 class="reveal">Ready to commission?</h2>
-      <p class="body-text reveal">Share your vision. We will take the time to bring it to life.</p>
+      <div class="eyebrow reveal">By appointment only</div>
+      <h2 class="reveal">Every gown begins with a conversation</h2>
+      <p class="cta-subtext reveal">Tell us about your occasion, your vision, your timeline. We will take the time to make it extraordinary.</p>
       <div class="reveal">
-        <a href="commission.html" class="btn-primary">Request a consultation</a>
+        <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
+        <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+           class="btn-primary">Start your journey</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="nav-logo">T T M D</div>
-          <div class="footer-address">
-            Singapore<br>
-            By appointment only
-          </div>
+          <div class="nav-logo">Time Taken to Make a Dress</div>
+          <p class="footer-tagline">Celebrating the time taken.</p>
         </div>
-        <div class="footer-nav">
+        <nav class="footer-nav" aria-label="Footer navigation">
           <div class="footer-col">
-            <div class="footer-col-title">Atelier</div>
+            <div class="footer-col-title">Pages</div>
             <a href="bespoke.html">Bespoke</a>
             <a href="archive.html">Archive</a>
-            <a href="commission.html">Commission</a>
+            <a href="rental.html">Rental</a>
           </div>
           <div class="footer-col">
             <div class="footer-col-title">Connect</div>
-            <a href="#">Instagram</a>
-            <a href="#">Email</a>
+            <a href="https://instagram.com/timetakentomakedress" target="_blank" rel="noopener noreferrer" class="footer-instagram-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+              </svg>
+              Instagram
+            </a>
+            <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
+            <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">WhatsApp</a>
           </div>
-        </div>
+        </nav>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Time Taken to Make a Dress</span>
-        <span>Crafted by hand. Always.</span>
+        <span>Singapore</span>
       </div>
     </div>
   </footer>
