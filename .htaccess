@@ -1,0 +1,3 @@
+# Override WordPress rewrite rules — serve static files directly
+DirectoryIndex index.html
+RewriteEngine Off
