@@ -62,10 +62,12 @@ Plans:
   3. The five-step process section, philosophy quote, featured commission, and bottom CTA banner all render with scroll-reveal fade-up animations on entry
   4. The Bespoke page renders all five alternating image/text chapters, four or more fabric archive cards, the "Our promise" triptych, and a WhatsApp CTA
   5. Every section on both pages has a visible WhatsApp CTA as the primary conversion path
-**Plans**: 2 plans
+**Plans**: 4 plans
 Plans:
-- [ ] 01-01-PLAN.md — Design tokens, typography, and style.css transformation
-- [ ] 01-02-PLAN.md — SVG placeholder system with three silhouette variants
+- [ ] 03-01-PLAN.md — CSS token addition + full style migration from inline blocks to style.css
+- [ ] 03-02-PLAN.md — Homepage HTML cleanup: hero CTA, placeholders, reveals, WhatsApp numbers
+- [ ] 03-03-PLAN.md — Bespoke HTML cleanup: placeholders, WhatsApp numbers, section headings
+- [ ] 03-04-PLAN.md — GSAP progressive enhancement + visual verification checkpoint
 **UI hint**: yes
 
 ### Phase 4: Archive Gallery
@@ -119,8 +121,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Token Foundation | 2/2 | Complete | - |
-| 2. Shared Chrome | 0/2 | Planning complete | - |
-| 3. Homepage + Bespoke | 0/TBD | Not started | - |
+| 2. Shared Chrome | 2/2 | Complete | - |
+| 3. Homepage + Bespoke | 0/4 | Planning complete | - |
 | 4. Archive Gallery | 0/TBD | Not started | - |
 | 5. Rental Page | 0/TBD | Not started | - |
 | 6. Production | 0/TBD | Not started | - |
