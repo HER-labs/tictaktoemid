@@ -11,6 +11,9 @@
   --text-secondary:  #4A4A4A;
   --text-tertiary:   #8A8A8A;
 
+  /* Border */
+  --border-subtle: rgba(26, 26, 26, 0.08);
+
   /* Typography */
   --serif:  'Cormorant Garamond', 'Georgia', serif;
   --sans:   'Jost', -apple-system, 'Helvetica Neue', sans-serif;
