@@ -10,214 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* --- Bespoke page styles --- */
-
-    .page-hero {
-      padding: calc(72px + clamp(80px, 12vw, 140px)) 0 clamp(80px, 12vw, 140px);
-      text-align: center;
-      position: relative;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, #0d0905 0%, var(--bg) 100%);
-      z-index: -1;
-    }
-
-    .page-hero h1 { margin-top: 16px; }
-    .page-hero .body-text { margin: 20px auto 0; text-align: center; }
-
-    /* --- Chapter Sections --- */
-    .chapter {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 80vh;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .chapter.reversed { direction: rtl; }
-    .chapter.reversed > * { direction: ltr; }
-
-    .chapter-image {
-      min-height: 500px;
-    }
-
-    .chapter-content {
-      padding: clamp(40px, 6vw, 80px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .chapter-num {
-      font-family: var(--serif);
-      font-size: clamp(60px, 8vw, 100px);
-      font-weight: 300;
-      color: rgba(186,117,23,0.1);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .chapter-content h2 {
-      margin-bottom: 20px;
-    }
-
-    .chapter-content .body-text {
-      margin-bottom: 24px;
-    }
-
-    .chapter-detail {
-      display: flex;
-      gap: 32px;
-      margin-top: 28px;
-      padding-top: 28px;
-      border-top: 0.5px solid var(--border);
-    }
-
-    .detail-item {
-      flex: 1;
-    }
-
-    .detail-label {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 6px;
-    }
-
-    .detail-value {
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-
-    /* --- Fabric Section --- */
-    .fabric-section {
-      padding: clamp(80px, 12vw, 160px) 0;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .fabric-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 48px;
-    }
-
-    .fabric-card {
-      background: var(--bg-card);
-      border: 0.5px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      transition: border-color 0.3s var(--ease);
-      cursor: default;
-    }
-
-    .fabric-card:hover {
-      border-color: var(--border-gold);
-    }
-
-    .fabric-swatch {
-      height: 180px;
-    }
-
-    .fabric-info {
-      padding: 20px;
-    }
-
-    .fabric-name {
-      font-family: var(--serif);
-      font-size: 15px;
-      color: var(--gold-light);
-      margin-bottom: 4px;
-    }
-
-    .fabric-origin {
-      font-size: 11px;
-      color: var(--gold-dim);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .fabric-desc {
-      font-size: 12px;
-      color: var(--text-faint);
-      line-height: 1.6;
-    }
-
-    /* --- Promise Section --- */
-    .promise-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 0.5px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-top: 48px;
-    }
-
-    .promise-cell {
-      padding: clamp(28px, 4vw, 48px);
-      border-right: 0.5px solid var(--border);
-      transition: background 0.4s var(--ease);
-    }
-
-    .promise-cell:last-child { border-right: none; }
-
-    .promise-cell:hover { background: rgba(186,117,23,0.03); }
-
-    .promise-num {
-      font-size: 10px;
-      color: var(--gold-dim);
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-    }
-
-    .promise-title {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--gold-light);
-      margin-bottom: 12px;
-    }
-
-    .promise-desc {
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-
-    /* --- CTA --- */
-    .bespoke-cta {
-      padding: clamp(80px, 12vw, 140px) 0;
-      text-align: center;
-    }
-
-    .bespoke-cta h2 { margin-bottom: 16px; }
-    .bespoke-cta .body-text { margin: 0 auto 36px; text-align: center; }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      .chapter { grid-template-columns: 1fr; }
-      .chapter.reversed { direction: ltr; }
-      .chapter-image { min-height: 300px; }
-      .chapter-detail { flex-direction: column; gap: 16px; }
-      .fabric-grid { grid-template-columns: 1fr 1fr; }
-      .promise-grid { grid-template-columns: 1fr; }
-      .promise-cell { border-right: none; border-bottom: 0.5px solid var(--border); }
-      .promise-cell:last-child { border-bottom: none; }
-    }
-
-    @media (max-width: 480px) {
-      .fabric-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
@@ -229,11 +21,10 @@
       <li><a href="bespoke.html">Bespoke</a></li>
       <li><a href="archive.html">Archive</a></li>
       <li><a href="rental.html">Rental</a></li>
-      <li><a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">Contact</a></li>
+      <li><a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">Contact</a></li>
       <li class="nav-overlay-cta">
-        <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+        <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
            class="btn-primary">Begin your commission</a>
-        <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
       </li>
     </ul>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-overlay">
@@ -252,7 +43,9 @@
 
   <!-- Chapter 1: The Consultation -->
   <section class="chapter reveal">
-    <div class="chapter-image placeholder-img" data-label="Consultation photography"></div>
+    <div class="chapter-image placeholder placeholder--portrait">
+      <img src="img/placeholders/silhouette-portrait.svg" alt="">
+    </div>
     <div class="chapter-content">
       <div class="chapter-num">01</div>
       <div class="eyebrow">Chapter one</div>
@@ -273,7 +66,9 @@
 
   <!-- Chapter 2: The Sketch -->
   <section class="chapter reversed reveal">
-    <div class="chapter-image placeholder-img" data-label="Sketching process"></div>
+    <div class="chapter-image placeholder placeholder--portrait">
+      <img src="img/placeholders/silhouette-portrait.svg" alt="">
+    </div>
     <div class="chapter-content">
       <div class="chapter-num">02</div>
       <div class="eyebrow">Chapter two</div>
@@ -294,7 +89,9 @@
 
   <!-- Chapter 3: The Toile -->
   <section class="chapter reveal">
-    <div class="chapter-image placeholder-img" data-label="Toile draping"></div>
+    <div class="chapter-image placeholder placeholder--portrait">
+      <img src="img/placeholders/silhouette-portrait.svg" alt="">
+    </div>
     <div class="chapter-content">
       <div class="chapter-num">03</div>
       <div class="eyebrow">Chapter three</div>
@@ -315,7 +112,9 @@
 
   <!-- Chapter 4: The Craft -->
   <section class="chapter reversed reveal">
-    <div class="chapter-image placeholder-img" data-label="Hand embellishment"></div>
+    <div class="chapter-image placeholder placeholder--portrait">
+      <img src="img/placeholders/silhouette-portrait.svg" alt="">
+    </div>
     <div class="chapter-content">
       <div class="chapter-num">04</div>
       <div class="eyebrow">Chapter four</div>
@@ -336,7 +135,9 @@
 
   <!-- Chapter 5: The Reveal -->
   <section class="chapter reveal">
-    <div class="chapter-image placeholder-img" data-label="Final reveal photography"></div>
+    <div class="chapter-image placeholder placeholder--portrait">
+      <img src="img/placeholders/silhouette-portrait.svg" alt="">
+    </div>
     <div class="chapter-content">
       <div class="chapter-num">05</div>
       <div class="eyebrow">Chapter five</div>
@@ -359,12 +160,14 @@
   <section class="fabric-section">
     <div class="container">
       <div class="eyebrow reveal">Materials</div>
-      <h2 class="reveal" style="margin-top: 16px; margin-bottom: 8px;">The Fabric Archive</h2>
+      <h2 class="reveal section-heading">The Fabric Archive</h2>
       <p class="body-text reveal">Every material in the atelier has a provenance. We source from the world's finest mills and artisan workshops — selecting only fabrics that match the standard our clients expect.</p>
 
       <div class="fabric-grid">
         <div class="fabric-card reveal reveal-delay-1">
-          <div class="fabric-swatch placeholder-img" data-label="Fabric macro"></div>
+          <div class="fabric-swatch placeholder placeholder--fabric">
+            <img src="img/placeholders/silhouette-fabric.svg" alt="">
+          </div>
           <div class="fabric-info">
             <div class="fabric-name">French Chantilly Lace</div>
             <div class="fabric-origin">Calais, France</div>
@@ -372,7 +175,9 @@
           </div>
         </div>
         <div class="fabric-card reveal reveal-delay-2">
-          <div class="fabric-swatch placeholder-img" data-label="Fabric macro"></div>
+          <div class="fabric-swatch placeholder placeholder--fabric">
+            <img src="img/placeholders/silhouette-fabric.svg" alt="">
+          </div>
           <div class="fabric-info">
             <div class="fabric-name">Lyonnaise Silk Duchesse</div>
             <div class="fabric-origin">Lyon, France</div>
@@ -380,7 +185,9 @@
           </div>
         </div>
         <div class="fabric-card reveal reveal-delay-3">
-          <div class="fabric-swatch placeholder-img" data-label="Fabric macro"></div>
+          <div class="fabric-swatch placeholder placeholder--fabric">
+            <img src="img/placeholders/silhouette-fabric.svg" alt="">
+          </div>
           <div class="fabric-info">
             <div class="fabric-name">Italian Silk Organza</div>
             <div class="fabric-origin">Como, Italy</div>
@@ -388,7 +195,9 @@
           </div>
         </div>
         <div class="fabric-card reveal reveal-delay-4">
-          <div class="fabric-swatch placeholder-img" data-label="Fabric macro"></div>
+          <div class="fabric-swatch placeholder placeholder--fabric">
+            <img src="img/placeholders/silhouette-fabric.svg" alt="">
+          </div>
           <div class="fabric-info">
             <div class="fabric-name">Murano Glass Beadwork</div>
             <div class="fabric-origin">Venice, Italy</div>
@@ -403,7 +212,7 @@
   <section class="section">
     <div class="container">
       <div class="eyebrow reveal">Our promise</div>
-      <h2 class="reveal" style="margin-top: 16px; margin-bottom: 8px;">What bespoke means here</h2>
+      <h2 class="reveal section-heading">What bespoke means here</h2>
 
       <div class="promise-grid reveal">
         <div class="promise-cell">
@@ -432,8 +241,7 @@
       <h2 class="reveal">Every gown begins with a conversation</h2>
       <p class="cta-subtext reveal">Tell us about your occasion, your vision, your timeline. We will take the time to make it extraordinary.</p>
       <div class="reveal">
-        <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
-        <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+        <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
            class="btn-primary">Start your journey</a>
       </div>
     </div>
@@ -457,8 +265,7 @@
           <div class="footer-col">
             <div class="footer-col-title">Connect</div>
             <a href="https://instagram.com/timetakentomakedress" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
-            <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">WhatsApp</a>
+            <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">WhatsApp</a>
           </div>
         </nav>
       </div>
