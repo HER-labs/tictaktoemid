@@ -142,4 +142,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* --- GSAP Progressive Enhancement --- */
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReduced) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Process step stagger (homepage only)
+    const processSteps = document.querySelectorAll('.process-step');
+    if (processSteps.length) {
+      // Remove CSS reveal classes since GSAP handles the animation
+      processSteps.forEach(step => {
+        step.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4');
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(30px)';
+      });
+
+      gsap.to('.process-step', {
+        scrollTrigger: {
+          trigger: '.process-grid',
+          start: 'top 80%',
+          once: true
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power2.out'
+      });
+    }
+
+    // Chapter entrance (bespoke page only)
+    const chapters = document.querySelectorAll('.chapter');
+    if (chapters.length) {
+      chapters.forEach(chapter => {
+        const content = chapter.querySelector('.chapter-content');
+        const image = chapter.querySelector('.chapter-image');
+
+        if (content) {
+          gsap.from(content, {
+            scrollTrigger: {
+              trigger: chapter,
+              start: 'top 75%',
+              once: true
+            },
+            opacity: 0,
+            x: chapter.classList.contains('reversed') ? -40 : 40,
+            duration: 1,
+            ease: 'power2.out'
+          });
+        }
+
+        if (image) {
+          gsap.from(image, {
+            scrollTrigger: {
+              trigger: chapter,
+              start: 'top 75%',
+              once: true
+            },
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power2.out'
+          });
+        }
+      });
+    }
+  }
+  // Fallback: CSS .reveal classes handle basic fade-up if GSAP is absent
+
 });
