@@ -10,320 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* --- Homepage-specific styles --- */
-
-    /* Hero */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10,8,6,0.06) 0%, rgba(10,8,6,0.1) 40%, rgba(10,8,6,0.2) 100%), url('img/homepage_white_dramatic_gown.png') center/cover no-repeat;
-      z-index: 0;
-    }
-
-    /* Subtle texture overlay */
-    .hero-video-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(45deg, transparent, transparent 80px, rgba(186,117,23,0.015) 80px, rgba(186,117,23,0.015) 81px);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 0 24px;
-    }
-
-    .hero-wordmark {
-      font-family: var(--serif);
-      font-size: clamp(42px, 7vw, 86px);
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 1.2s var(--ease) 0.5s forwards;
-    }
-
-    .hero-sub {
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeUp 1s var(--ease) 1s forwards;
-    }
-
-    .hero-cta {
-      opacity: 0;
-      animation: fadeUp 1s var(--ease) 1.3s forwards;
-    }
-
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      animation: fadeUp 1s var(--ease) 1.8s forwards;
-    }
-
-    .hero-scroll-hint span {
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gold-dim), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
-    }
-
-    /* Video placeholder badge */
-    .video-badge {
-      position: absolute;
-      top: 88px;
-      right: 32px;
-      font-size: 9px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      border: 0.5px solid var(--border-gold);
-      padding: 6px 14px;
-      z-index: 2;
-    }
-
-    /* --- Clock Section --- */
-    .clock-section {
-      padding: clamp(80px, 12vw, 160px) 0;
-      text-align: center;
-      border-bottom: 0.5px solid var(--border);
-      position: relative;
-    }
-
-    .clock-number {
-      font-family: var(--serif);
-      font-size: clamp(64px, 12vw, 140px);
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1;
-      margin: 24px 0 12px;
-    }
-
-    .clock-label {
-      font-size: 13px;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-    }
-
-    .clock-sub {
-      font-size: 12px;
-      color: var(--text-faint);
-      margin-top: 8px;
-    }
-
-    /* --- Philosophy Strip --- */
-    .philosophy {
-      padding: clamp(48px, 8vw, 80px) 0;
-      text-align: center;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .philosophy blockquote {
-      font-family: var(--serif);
-      font-size: clamp(20px, 3vw, 32px);
-      font-weight: 300;
-      color: var(--text-dim);
-      font-style: italic;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    .philosophy cite {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-top: 20px;
-      font-style: normal;
-    }
-
-    /* --- Process Section --- */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      border: 0.5px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-top: 48px;
-    }
-
-    .process-step {
-      padding: clamp(28px, 4vw, 48px) clamp(16px, 2vw, 28px);
-      border-right: 0.5px solid var(--border);
-      text-align: center;
-      transition: background 0.4s var(--ease);
-      cursor: default;
-    }
-
-    .process-step:last-child { border-right: none; }
-
-    .process-step:hover {
-      background: rgba(186,117,23,0.04);
-    }
-
-    .process-num {
-      font-size: 10px;
-      color: var(--gold-dim);
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-    }
-
-    .process-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 16px;
-      border: 0.5px solid var(--border-gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .process-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 1.2;
-    }
-
-    .process-title {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--gold-light);
-      margin-bottom: 8px;
-    }
-
-    .process-desc {
-      font-size: 12px;
-      color: var(--text-faint);
-      line-height: 1.6;
-    }
-
-    .process-hours {
-      font-size: 10px;
-      color: var(--gold-dim);
-      margin-top: 12px;
-      letter-spacing: 0.1em;
-    }
-
-    /* --- Featured Commission --- */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 0.5px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-top: 48px;
-    }
-
-    .featured-image {
-      min-height: 500px;
-    }
-
-    .featured-text {
-      padding: clamp(32px, 5vw, 64px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .featured-text h3 {
-      margin: 16px 0;
-    }
-
-    .featured-meta {
-      display: flex;
-      gap: 32px;
-      margin-top: 28px;
-      padding-top: 28px;
-      border-top: 0.5px solid var(--border);
-    }
-
-    .featured-stat-label {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 4px;
-    }
-
-    .featured-stat-value {
-      font-family: var(--serif);
-      font-size: 20px;
-      color: var(--gold-light);
-      font-weight: 300;
-    }
-
-    /* --- Responsive overrides --- */
-    @media (max-width: 900px) {
-      .process-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .process-step:nth-child(3) { border-right: none; }
-      .process-step:nth-child(4),
-      .process-step:nth-child(5) { border-top: 0.5px solid var(--border); }
-    }
-
-    @media (max-width: 768px) {
-      .featured-grid { grid-template-columns: 1fr; }
-      .featured-image { min-height: 300px; }
-      .featured-meta { flex-direction: column; gap: 16px; }
-    }
-
-    @media (max-width: 600px) {
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .process-step:nth-child(2n) { border-right: none; }
-      .process-step:nth-child(n+3) { border-top: 0.5px solid var(--border); }
-    }
-  </style>
 </head>
 <body>
 
@@ -335,11 +21,10 @@
       <li><a href="bespoke.html">Bespoke</a></li>
       <li><a href="archive.html">Archive</a></li>
       <li><a href="rental.html">Rental</a></li>
-      <li><a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">Contact</a></li>
+      <li><a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">Contact</a></li>
       <li class="nav-overlay-cta">
-        <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+        <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
            class="btn-primary">Begin your commission</a>
-        <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
       </li>
     </ul>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-overlay">
@@ -350,12 +35,13 @@
   <!-- Hero -->
   <section class="hero" id="main-content">
     <div class="hero-video-bg"></div>
-    <div class="video-badge">Full-screen video · Atelier at work</div>
     <div class="hero-content">
       <div class="hero-wordmark">Time Taken<br>to Make a Dress</div>
       <div class="hero-sub">Singapore · By appointment only</div>
       <div class="hero-cta">
-        <a href="commission.html" class="btn-outline">Begin your commission</a>
+        <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+           class="btn-primary">Begin your commission</a>
+        <a href="commission.html" class="hero-secondary-cta">Learn about our process</a>
       </div>
     </div>
     <div class="hero-scroll-hint">
@@ -388,11 +74,11 @@
   <section class="section">
     <div class="container">
       <div class="eyebrow reveal">How a gown is born</div>
-      <h2 class="reveal" style="margin-top: 16px; margin-bottom: 8px;">The Process</h2>
+      <h2 class="reveal section-heading">The Process</h2>
       <p class="body-text reveal">Every commission follows five stages of making. Each stage demands patience, precision, and an intimate understanding of the body the dress will live on.</p>
 
-      <div class="process-grid reveal">
-        <div class="process-step">
+      <div class="process-grid">
+        <div class="process-step reveal">
           <div class="process-num">01</div>
           <div class="process-icon">
             <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
@@ -401,7 +87,7 @@
           <div class="process-desc">The vision takes its first breath on paper</div>
           <div class="process-hours">~160 hours</div>
         </div>
-        <div class="process-step">
+        <div class="process-step reveal reveal-delay-1">
           <div class="process-num">02</div>
           <div class="process-icon">
             <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2 12 5.69 8 2 3.62 3.46 2 8l3.69 4L2 16l1.62 4.54L8 22l4-3.69L16 22l4.38-1.46L22 16l-3.69-4L22 8l-1.62-4.54z"/></svg>
@@ -410,7 +96,7 @@
           <div class="process-desc">The pattern sculpted in cotton, testing every line</div>
           <div class="process-hours">~120 hours</div>
         </div>
-        <div class="process-step">
+        <div class="process-step reveal reveal-delay-2">
           <div class="process-num">03</div>
           <div class="process-icon">
             <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
@@ -419,7 +105,7 @@
           <div class="process-desc">The dress meets its body for the first time</div>
           <div class="process-hours">~180 hours</div>
         </div>
-        <div class="process-step">
+        <div class="process-step reveal reveal-delay-3">
           <div class="process-num">04</div>
           <div class="process-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -428,7 +114,7 @@
           <div class="process-desc">Hand embellishment — bead, crystal, lace</div>
           <div class="process-hours">~880 hours</div>
         </div>
-        <div class="process-step">
+        <div class="process-step reveal reveal-delay-4">
           <div class="process-num">05</div>
           <div class="process-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
@@ -445,10 +131,12 @@
   <section class="section">
     <div class="container">
       <div class="eyebrow reveal">Latest commission</div>
-      <h2 class="reveal" style="margin-top: 16px; margin-bottom: 8px;">From the Archive</h2>
+      <h2 class="reveal section-heading">From the Archive</h2>
 
       <div class="featured-grid reveal">
-        <div class="featured-image placeholder-img" data-label="Editorial photography"></div>
+        <div class="featured-image placeholder placeholder--portrait">
+          <img src="img/placeholders/silhouette-portrait.svg" alt="">
+        </div>
         <div class="featured-text">
           <div class="eyebrow">Commission 047</div>
           <h3>The Cathedral Gown</h3>
@@ -482,8 +170,7 @@
       <h2 class="reveal">Every gown begins with a conversation</h2>
       <p class="cta-subtext reveal">Tell us about your occasion, your vision, your timeline. We will take the time to make it extraordinary.</p>
       <div class="reveal">
-        <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
-        <a href="https://wa.me/65XXXXXXXX?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
+        <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D."
            class="btn-primary">Begin your commission</a>
       </div>
     </div>
@@ -509,7 +196,6 @@
             <a href="https://instagram.com/timetakentomakedress" target="_blank" rel="noopener noreferrer" class="footer-instagram-link">
               Instagram
             </a>
-            <!-- TODO: Replace 65XXXXXXXX with real WhatsApp number -->
             <a href="https://wa.me/6588567038?text=Hello%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20bespoke%20commission%20for%20%5Boccasion%5D.">WhatsApp</a>
           </div>
         </nav>
