@@ -48,8 +48,8 @@ Plans:
   5. Images can be swapped by dropping files into their role directory and updating one src attribute per image
 **Plans**: 2 plans
 Plans:
-- [ ] 02-01-PLAN.md — CSS/JS infrastructure: CTA banner styles, footer tagline, skip link, overlay CTA, reduced motion, closeOverlay JS, images/ directory
-- [ ] 02-02-PLAN.md — HTML synchronization: canonical nav, footer, and WhatsApp CTA across all 4 pages
+- [x] 02-01-PLAN.md — CSS/JS infrastructure: CTA banner styles, footer tagline, skip link, overlay CTA, reduced motion, closeOverlay JS, images/ directory
+- [x] 02-02-PLAN.md — HTML synchronization: canonical nav, footer, and WhatsApp CTA across all 4 pages
 **UI hint**: yes
 
 ### Phase 3: Homepage + Bespoke
